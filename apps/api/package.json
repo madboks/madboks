@@ -1,0 +1,65 @@
+{
+  "name": "@madboks/api",
+  "version": "0.0.1",
+  "description": "Madboks: API",
+  "license": "MIT",
+  "private": true,
+  "main": "src/index.js",
+  "type": "module",
+  "keywords": [
+    "madboks",
+    "api"
+  ],
+  "author": {
+    "name": "José Manuel Rosa Moncayo",
+    "email": "josemanuel.rosamoncayo@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Jose Manuel Rosa Moncayo",
+      "email": "josemanuel.rosamoncayo+madboks@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/jmanuelrosa/madboks/apps/api#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmanuelrosaes/madboks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jmanuelrosaes/madboks/issues?q=is%3Aissue+label%api"
+  },
+  "engines": {
+    "node": ">= 20.x",
+    "npm": ">= 8.13.2",
+    "yarn": ">=1.22.10"
+  },
+  "scripts": {
+    "dev": "node --require dotenv/config --import tsx --watch --watch-preserve-output src/index.ts",
+    "db:reset": "yarn run prisma migrate reset --force",
+    "lint": "ts-standard --ext ts,tsx .",
+    "lint:type": "tsc --noEmit",
+    "lint:fix": "ts-standard --ext ts --fix .",
+    "build": "",
+    "cleanup": "rm -rf node_modules yarn.lock && yarn cache clean"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seeds/index.ts"
+  },
+  "dependencies": {
+    "@fastify/cors": "latest",
+    "@fastify/helmet": "latest",
+    "@prisma/client": "latest",
+    "fastify": "latest",
+    "fastify-helmet": "latest",
+    "qs": "latest"
+  },
+  "devDependencies": {
+    "@types/qs": "latest",
+    "dotenv": "latest",
+    "pino-pretty": "latest",
+    "prisma": "latest",
+    "ts-standard": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "name": "@madboks/app",
+  "version": "0.0.1",
+  "description": "Madboks: The app to register all food",
+  "license": "MIT",
+  "private": true,
+  "main": "src/index.js",
+  "type": "module",
+  "keywords": [
+    "madboks",
+    "app"
+  ],
+  "author": {
+    "name": "José Manuel Rosa Moncayo",
+    "email": "josemanuel.rosamoncayo@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Jose Manuel Rosa Moncayo",
+      "email": "josemanuel.rosamoncayo+madboks@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/jmanuelrosa/madboks/apps/house#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmanuelrosa/madboks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jmanuelrosa/madboks/issues?q=is%3Aissue+label%app"
+  },
+  "engines": {
+    "node": ">= 18.12.x",
+    "npm": ">= 8.13.2",
+    "yarn": ">=1.22.10"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 9000",
+    "lint": "ts-standard --ext ts,tsx .",
+    "lint:type": "tsc --noEmit",
+    "lint:fix": "ts-standard --ext ts,tsx --fix .",
+    "build": "vite build",
+    "preview": "vite preview",
+    "cleanup": "rm -rf node_modules yarn.lock && yarn cache clean"
+  },
+  "dependencies": {
+    "@fontsource/poppins": "latest",
+    "@hookform/resolvers": "latest",
+    "@radix-ui/react-alert-dialog": "latest",
+    "@radix-ui/react-avatar": "latest",
+    "@radix-ui/react-checkbox": "1.0.4",
+    "@radix-ui/react-dialog": "latest",
+    "@radix-ui/react-label": "latest",
+    "@radix-ui/react-popover": "latest",
+    "@radix-ui/react-scroll-area": "latest",
+    "@radix-ui/react-slot": "latest",
+    "class-variance-authority": "latest",
+    "clsx": "latest",
+    "cmdk": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-hook-form": "latest",
+    "react-media-devices": "latest",
+    "react-zxing": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "autoprefixer": "latest",
+    "postcss": "latest",
+    "react-router-dom": "latest",
+    "tailwind-merge": "latest",
+    "tailwindcss": "latest",
+    "ts-standard": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  }
+}

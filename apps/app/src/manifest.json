@@ -1,0 +1,8 @@
+{
+  "name": "Madboks",
+  "short_name": "Madboks",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "The app to register all food."
+}

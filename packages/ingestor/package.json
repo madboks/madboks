@@ -1,0 +1,56 @@
+{
+  "name": "@madboks/ingestor",
+  "version": "0.0.1",
+  "description": "Madboks: Ingestor",
+  "license": "MIT",
+  "private": true,
+  "main": "src/index.js",
+  "type": "module",
+  "keywords": [
+    "madboks",
+    "ingestor"
+  ],
+  "author": {
+    "name": "José Manuel Rosa Moncayo",
+    "email": "josemanuel.rosamoncayo@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Jose Manuel Rosa Moncayo",
+      "email": "josemanuel.rosamoncayo+madboks@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/jmanuelrosa/madboks/apps/ingestor#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmanuelrosaes/madboks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jmanuelrosaes/madboks/issues?q=is%3Aissue+label%ingestor"
+  },
+  "engines": {
+    "node": ">= 20.x",
+    "npm": ">= 8.13.2",
+    "yarn": ">=1.22.10"
+  },
+  "scripts": {
+    "transform": "tsx bin/transform.ts",
+    "dev": "node --require dotenv/config --import tsx --watch --watch-preserve-output src/index.ts",
+    "lint": "ts-standard --ext ts,tsx .",
+    "lint:type": "tsc --noEmit",
+    "lint:fix": "ts-standard --ext ts --fix .",
+    "build": "",
+    "cleanup": "rm -rf node_modules yarn.lock && yarn cache clean"
+  },
+  "dependencies": {
+    "@prisma/client": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "dotenv": "latest",
+    "prisma": "latest",
+    "ts-standard": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}

@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Items {
+  id            String     @id @default(uuid())
+
+  volunteer     String
+  amount        Int
+
+  products      Products @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId     String
+
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model Products {
+  id            String     @id @default(uuid())
+  barcode       String     @unique
+  kg            Float
+
+  vegetable     Vegetables @relation(fields: [vegetableId], references: [id], onDelete: Cascade)
+  vegetableId   String
+  country       Countries? @relation(fields: [countryCode], references: [code], onDelete: Cascade)
+  countryCode   String?
+
+  supermarkets  Supermarkets[]
+  Items         Items[]
+
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model Vegetables {
+  id            String     @id @default(uuid())
+  name          String     @unique
+  guideline     Float
+
+  products      Products[]
+
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model Supermarkets {
+  id          String  @id @default(uuid())
+  name        String
+
+  products    Products[]
+
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Countries {
+  code        String  @db.VarChar(3)  @id
+  name        String                  @unique
+
+  products    Products[]
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}

@@ -17,12 +17,12 @@ Before doing anything, we need to run our database with `PostgreSQL`. You can ru
 The first time you run the application you should run all the migrations and initial data to create the database schema and have some data to work with. To achieve this, you need to run this inside the `api` project/directory:
 
 ```bash
-> yarn run prism migrate dev
-> yarn run prism generate
+> yarn workspace @madboks/api run prisma migrate dev
+> yarn workspace @madboks/api run prisma generate
 ```
 
 and then, we can run the seeds
 
 ```bash
-> yarn run prism db seed
+> yarn workspace @madboks/api run prisma db seed
 ```

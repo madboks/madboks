@@ -1,14 +1,14 @@
 {
-  "name": "@madboks/ingestor",
+  "name": "@madboks/web",
   "version": "0.0.1",
-  "description": "Madboks: Ingestor",
+  "description": "Madboks: Public website",
   "license": "MIT",
   "private": true,
   "main": "src/index.js",
   "type": "module",
   "keywords": [
     "madboks",
-    "ingestor"
+    "web"
   ],
   "author": {
     "name": "José Manuel Rosa Moncayo",
@@ -20,13 +20,13 @@
       "email": "josemanuel.rosamoncayo+madboks@gmail.com"
     }
   ],
-  "homepage": "https://github.com/madboks/madboks/ingestor#readme",
+  "homepage": "https://github.com/madboks/madboks/apps/web#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/madboks/madboks.git"
   },
   "bugs": {
-    "url": "https://github.com/madboks/madboks/issues?q=is%3Aissue+label%ingestor"
+    "url": "https://github.com/madboks/madboks/issues?q=is%3Aissue+label%web"
   },
   "engines": {
     "node": ">= 20.x",
@@ -34,23 +34,21 @@
     "yarn": ">= 4.0.2"
   },
   "scripts": {
-    "transform": "tsx bin/transform.ts",
-    "dev": "node --require dotenv/config --import tsx --watch --watch-preserve-output src/index.ts",
-    "lint": "ts-standard --ext ts,tsx .",
-    "lint:type": "tsc --noEmit",
-    "lint:fix": "ts-standard --ext ts --fix .",
-    "build": "",
+    "dev": "astro dev",
+    "lint": "astro check",
+    "lint:type": "",
+    "lint:fix": "astro check ",
+    "build": "astro build",
     "cleanup": "rm -rf node_modules yarn.lock && yarn cache clean"
   },
   "dependencies": {
-    "@prisma/client": "latest"
+    "@astrojs/tailwind": "latest",
+    "astro": "latest",
+    "tailwindcss": "latest"
   },
   "devDependencies": {
-    "@types/node": "latest",
-    "dotenv": "latest",
-    "prisma": "latest",
-    "ts-standard": "latest",
-    "tsx": "latest",
+    "@astrojs/check": "latest",
     "typescript": "latest"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }

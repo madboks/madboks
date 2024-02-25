@@ -61,5 +61,6 @@
     "ts-standard": "latest",
     "tsx": "latest",
     "typescript": "latest"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }

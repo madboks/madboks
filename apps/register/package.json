@@ -1,14 +1,14 @@
 {
-  "name": "@madboks/dashboard",
+  "name": "@madboks/register",
   "version": "0.0.1",
-  "description": "Dashboard: The app to manage the NGO",
+  "description": "Madboks: The app to register all food",
   "license": "MIT",
   "private": true,
   "main": "src/index.js",
   "type": "module",
   "keywords": [
     "madboks",
-    "dashboard"
+    "app"
   ],
   "author": {
     "name": "José Manuel Rosa Moncayo",
@@ -20,18 +20,18 @@
       "email": "josemanuel.rosamoncayo+madboks@gmail.com"
     }
   ],
-  "homepage": "https://github.com/jmanuelrosa/madboks/apps/dashboard#readme",
+  "homepage": "https://github.com/madboks/madboks/apps/register#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jmanuelrosa/madboks.git"
+    "url": "git+https://github.com/madboks/madboks.git"
   },
   "bugs": {
-    "url": "https://github.com/jmanuelrosa/madboks/issues?q=is%3Aissue+label%dashboard"
+    "url": "https://github.com/madboks/madboks/issues?q=is%3Aissue+label%register"
   },
   "engines": {
     "node": ">= 18.12.x",
     "npm": ">= 8.13.2",
-    "yarn": ">=1.22.10"
+    "yarn": ">= 4.0.2"
   },
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 9000",
@@ -75,5 +75,6 @@
     "ts-standard": "latest",
     "typescript": "latest",
     "vite": "latest"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }

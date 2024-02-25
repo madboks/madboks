@@ -31,7 +31,7 @@
   "engines": {
     "node": ">= 20.x",
     "npm": ">= 8.13.2",
-    "yarn": ">=1.22.10"
+    "yarn": ">= 4.0.2"
   },
   "scripts": {
     "transform": "tsx bin/transform.ts",

@@ -10,16 +10,3 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
       - 4433:5432
-
-  ingestor:
-    container_name: madboks-ingestor
-    image: mysql:8.0.35
-    restart: always
-    environment:
-      - MYSQL_DATABASE=old
-      - MYSQL_ROOT_PASSWORD=madboks
-    ports:
-      - 3306:3306
-    volumes:
-      - ./packages/ingestor/dump/madboks.sql:/docker-entrypoint-initdb.d/init.sql
-    profiles: [ingest]

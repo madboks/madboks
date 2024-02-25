@@ -18,14 +18,14 @@
     "email": "josemanuel.rosamoncayo+madboks@gmail.com"
   },
   "contributors": [],
-  "homepage": "https://github.com/jmanuelrosa/madboks#readme",
-  "repository": "git+https://github.com/jmanuelrosa/madboks.git",
+  "homepage": "https://github.com/madboks/madboks#readme",
+  "repository": "git+https://github.com/madboks/madboks.git",
   "workspaces": [
     "packages/*",
     "apps/*"
   ],
   "bugs": {
-    "url": "https://github.com/jmanuelrosa/madboks/issues"
+    "url": "https://github.com/madboks/madboks/issues"
   },
   "engines": {
     "node": ">= 20.x",

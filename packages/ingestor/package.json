@@ -20,13 +20,13 @@
       "email": "josemanuel.rosamoncayo+madboks@gmail.com"
     }
   ],
-  "homepage": "https://github.com/jmanuelrosa/madboks/apps/ingestor#readme",
+  "homepage": "https://github.com/madboks/madboks/ingestor#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jmanuelrosaes/madboks.git"
+    "url": "git+https://github.com/madboks/madboks.git"
   },
   "bugs": {
-    "url": "https://github.com/jmanuelrosaes/madboks/issues?q=is%3Aissue+label%ingestor"
+    "url": "https://github.com/madboks/madboks/issues?q=is%3Aissue+label%ingestor"
   },
   "engines": {
     "node": ">= 20.x",

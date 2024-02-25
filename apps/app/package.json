@@ -1,7 +1,7 @@
 {
   "name": "@madboks/app",
   "version": "0.0.1",
-  "description": "Madboks: The app to register all food",
+  "description": "App: The app to manage the NGO",
   "license": "MIT",
   "private": true,
   "main": "src/index.js",
@@ -20,18 +20,18 @@
       "email": "josemanuel.rosamoncayo+madboks@gmail.com"
     }
   ],
-  "homepage": "https://github.com/madboks/madboks/apps/house#readme",
+  "homepage": "https://github.com/jmanuelrosa/madboks/apps/app#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/madboks/madboks.git"
+    "url": "git+https://github.com/jmanuelrosa/madboks.git"
   },
   "bugs": {
-    "url": "https://github.com/madboks/madboks/issues?q=is%3Aissue+label%app"
+    "url": "https://github.com/jmanuelrosa/madboks/issues?q=is%3Aissue+label%app"
   },
   "engines": {
     "node": ">= 18.12.x",
     "npm": ">= 8.13.2",
-    "yarn": ">= 4.0.2"
+    "yarn": ">=1.22.10"
   },
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 9000",
@@ -75,5 +75,6 @@
     "ts-standard": "latest",
     "typescript": "latest",
     "vite": "latest"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }

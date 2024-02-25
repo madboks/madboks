@@ -1,0 +1,54 @@
+{
+  "name": "@madboks/web",
+  "version": "0.0.1",
+  "description": "Madboks: Public website",
+  "license": "MIT",
+  "private": true,
+  "main": "src/index.js",
+  "type": "module",
+  "keywords": [
+    "madboks",
+    "web"
+  ],
+  "author": {
+    "name": "José Manuel Rosa Moncayo",
+    "email": "josemanuel.rosamoncayo@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Jose Manuel Rosa Moncayo",
+      "email": "josemanuel.rosamoncayo+madboks@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/madboks/madboks/apps/web#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madboks/madboks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/madboks/madboks/issues?q=is%3Aissue+label%web"
+  },
+  "engines": {
+    "node": ">= 20.x",
+    "npm": ">= 8.13.2",
+    "yarn": ">= 4.0.2"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "lint": "astro check",
+    "lint:type": "",
+    "lint:fix": "astro check ",
+    "build": "astro build",
+    "cleanup": "rm -rf node_modules yarn.lock && yarn cache clean"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "latest",
+    "astro": "latest",
+    "tailwindcss": "latest"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "typescript": "latest"
+  },
+  "packageManager": "yarn@4.0.2"
+}

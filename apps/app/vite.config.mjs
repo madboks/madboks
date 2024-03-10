@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     server: {
-      https: false,
+      https: false
     },
     define: {
       __APP_ENV__: env.APP_ENV

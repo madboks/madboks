@@ -1,4 +1,3 @@
-import { type PrismaClient } from '@prisma/client'
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
 interface SupermarketsFilters {
@@ -7,32 +6,34 @@ interface SupermarketsFilters {
   }
 }
 
-export const list = (db: PrismaClient) =>
-  async (request: FastifyRequest, response: FastifyReply): Promise<FastifyReply> => {
-    const { filter } = request.query as SupermarketsFilters
+export async function list (
+  request: FastifyRequest,
+  response: FastifyReply
+): Promise<FastifyReply> {
+  const { filter } = request.query as SupermarketsFilters
 
-    const supermarkets = await db.supermarkets.findMany({
-      orderBy: {
-        name: 'asc'
-      },
-      where: {
-        name: filter?.name != null
-          ? {
-              equals: filter.name,
-              mode: 'insensitive'
-            }
-          : undefined
-      },
-      select: {
-        id: true,
-        name: true
-      }
+  const supermarkets = await request.server.db.supermarkets.findMany({
+    orderBy: {
+      name: 'asc'
+    },
+    where: {
+      name: filter?.name != null
+        ? {
+            equals: filter.name,
+            mode: 'insensitive'
+          }
+        : undefined
+    },
+    select: {
+      id: true,
+      name: true
+    }
+  })
+
+  return await response
+    .code(200)
+    .send({
+      error: false,
+      data: supermarkets
     })
-
-    return await response
-      .code(200)
-      .send({
-        error: false,
-        data: supermarkets
-      })
-  }
+}

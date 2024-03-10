@@ -34,7 +34,7 @@
     "yarn": ">= 4.0.2"
   },
   "scripts": {
-    "dev": "node --require dotenv/config --import tsx --watch --watch-preserve-output src/index.ts",
+    "dev": "node --env-file=.env --import tsx --watch --watch-preserve-output src/index.ts",
     "db:reset": "yarn run prisma migrate reset --force",
     "lint": "ts-standard --ext ts,tsx .",
     "lint:type": "tsc --noEmit",
@@ -47,15 +47,13 @@
   },
   "dependencies": {
     "@fastify/cors": "latest",
-    "@fastify/helmet": "latest",
     "@prisma/client": "latest",
     "fastify": "latest",
-    "fastify-helmet": "latest",
+    "helmet": "latest",
     "qs": "latest"
   },
   "devDependencies": {
     "@types/qs": "latest",
-    "dotenv": "latest",
     "pino-pretty": "latest",
     "prisma": "latest",
     "ts-standard": "latest",

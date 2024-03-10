@@ -12,9 +12,13 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@plugins/*": ["./src/plugins/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@services/*": ["./src/services/*"],
     },
     "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
   }
 }

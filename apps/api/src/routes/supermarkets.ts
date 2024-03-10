@@ -3,20 +3,18 @@ import type { FastifyInstance } from 'fastify'
 import * as service from '@/services/supermarkets/index.ts'
 
 export function supermarkets (server: FastifyInstance): FastifyInstance {
-  const { db } = server
-
   server.route({
     method: 'GET',
     url: '/',
     schema: SUPERMARKETS_LIST_SCHEMA,
-    handler: service.list(db)
+    handler: service.list
   })
 
   server.route({
     method: 'GET',
     url: '/:id',
     schema: SUPERMARKETS_GET_SCHEMA,
-    handler: service.get(db)
+    handler: service.get
   })
 
   return server

@@ -5,20 +5,18 @@ import * as service from '@/services/products/index.ts'
 import errorSchema from '@/lib/errorSchema.ts'
 
 export function products (server: FastifyInstance): FastifyInstance {
-  const { db } = server
-
   server.route({
     method: 'GET',
     url: '/',
     schema: PRODUCTS_LIST_SCHEMA,
-    handler: service.list(db)
+    handler: service.list
   })
 
   server.route({
     method: 'GET',
     url: '/:code',
     schema: PRODUCTS_GET_SCHEMA,
-    handler: service.get(db)
+    handler: service.get
   })
 
   return server
@@ -91,6 +89,6 @@ const PRODUCTS_GET_SCHEMA = {
         }
       }
     },
-    400: errorSchema(400),
+    400: errorSchema(400)
   }
 }

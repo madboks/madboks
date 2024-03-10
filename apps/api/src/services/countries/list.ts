@@ -1,4 +1,3 @@
-import { type PrismaClient } from '@prisma/client'
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
 interface CountriesFilters {
@@ -8,27 +7,29 @@ interface CountriesFilters {
   }
 }
 
-export const list = (db: PrismaClient) =>
-  async (request: FastifyRequest, response: FastifyReply): Promise<FastifyReply> => {
-    const { filter } = request.query as CountriesFilters
+export async function list (
+  request: FastifyRequest,
+  response: FastifyReply
+): Promise<FastifyReply> {
+  const { filter } = request.query as CountriesFilters
 
-    const countries = await db.countries.findMany({
-      orderBy: {
-        name: 'asc'
-      },
-      where: {
-        ...filter
-      },
-      select: {
-        code: true,
-        name: true
-      }
+  const countries = await request.server.db.countries.findMany({
+    orderBy: {
+      name: 'asc'
+    },
+    where: {
+      ...filter
+    },
+    select: {
+      code: true,
+      name: true
+    }
+  })
+
+  return await response
+    .code(200)
+    .send({
+      error: false,
+      data: countries
     })
-
-    return await response
-      .code(200)
-      .send({
-        error: false,
-        data: countries
-      })
-  }
+}

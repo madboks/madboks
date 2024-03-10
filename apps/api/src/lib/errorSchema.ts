@@ -10,7 +10,6 @@ export interface DatabaseError {
   message: string | undefined
 }
 
-
 function schema (status = 400): ErrorSchema {
   return ({
     type: 'object',
@@ -40,4 +39,3 @@ function schema (status = 400): ErrorSchema {
 }
 
 export default schema
-

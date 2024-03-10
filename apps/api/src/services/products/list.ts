@@ -1,4 +1,3 @@
-import { PrismaClient } from '@prisma/client'
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
 interface ProductsFilters {
@@ -7,33 +6,35 @@ interface ProductsFilters {
   }
 }
 
-export const list = (db: PrismaClient) =>
-  async (request: FastifyRequest, response: FastifyReply): Promise<FastifyReply> => {
-    const { filter } = request.query as ProductsFilters
+export async function list (
+  request: FastifyRequest,
+  response: FastifyReply
+): Promise<FastifyReply> {
+  const { filter } = request.query as ProductsFilters
 
-    const products = await db.products.findMany({
-      orderBy: {
-        createdAt: 'asc'
-      },
-      where: {
-        ...filter
-      },
-      select: {
-        id: true,
-        barcode: true,
-        kg: true,
-        country: {
-          select: {
-            name: true
-          }
+  const products = await request.server.db.products.findMany({
+    orderBy: {
+      createdAt: 'asc'
+    },
+    where: {
+      ...filter
+    },
+    select: {
+      id: true,
+      barcode: true,
+      kg: true,
+      country: {
+        select: {
+          name: true
         }
       }
-    })
+    }
+  })
 
-    return await response
-      .code(200)
-      .send({
-        error: false,
-        data: products
-      })
-  }
+  return await response
+    .code(200)
+    .send({
+      error: false,
+      data: products
+    })
+}

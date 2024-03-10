@@ -5,8 +5,44 @@ import { isProduction } from '@/lib/env.ts'
 import { UUID } from '@/lib/uuid.ts'
 import { app } from '@/app.ts'
 
+interface ServerLogger {
+  target: 'pino-pretty'
+  options: {
+    translateTime: boolean
+    colorize: boolean
+  }
+}
+
+async function runServer (transport?: ServerLogger): Promise<FastifyInstance> {
+  const server = Fastify({
+    ajv: {
+      customOptions: {
+        allErrors: false,
+        coerceTypes: true,
+        removeAdditional: 'all',
+        useDefaults: true
+      }
+    },
+    disableRequestLogging: isProduction(),
+    genReqId: () => UUID(),
+    ignoreTrailingSlash: false,
+    logger: {
+      level: 'info',
+      transport
+    },
+    querystringParser: parse,
+    trustProxy: false
+  })
+
+  await app(server)
+
+  await server.ready()
+
+  return await server
+}
+
 async function start (): Promise<FastifyInstance> {
-  let transport
+  let transport: ServerLogger | undefined
   if (!isProduction()) {
     transport = {
       target: 'pino-pretty',
@@ -17,27 +53,7 @@ async function start (): Promise<FastifyInstance> {
     }
   }
 
-  const server = Fastify({
-    ignoreTrailingSlash: false,
-    disableRequestLogging: isProduction(),
-    genReqId: () => UUID(),
-    logger: {
-      level: 'info',
-      transport
-    },
-    querystringParser: parse,
-    ajv: {
-      customOptions: {
-        allErrors: false,
-        coerceTypes: true,
-        removeAdditional: 'all',
-        useDefaults: true
-      }
-    }
-
-  })
-
-  await app(server)
+  const server = await runServer(transport)
 
   try {
     await server.listen({
@@ -48,7 +64,7 @@ async function start (): Promise<FastifyInstance> {
     server.log.error(error)
   }
 
-  return await server
+  return server
 }
 
 start()

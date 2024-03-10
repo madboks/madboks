@@ -3,20 +3,18 @@ import type { FastifyInstance } from 'fastify'
 import * as service from '@/services/vegetables/index.ts'
 
 export function vegetables (server: FastifyInstance): FastifyInstance {
-  const { db } = server
-
   server.route({
     method: 'GET',
     url: '/',
     schema: VEGETABLES_LIST_SCHEMA,
-    handler: service.list(db)
+    handler: service.list
   })
 
   server.route({
     method: 'GET',
     url: '/:name',
     schema: VEGETABLES_GET_SCHEMA,
-    handler: service.get(db)
+    handler: service.get
   })
 
   return server

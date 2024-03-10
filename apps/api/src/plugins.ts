@@ -1,20 +1,20 @@
 import type { FastifyInstance } from 'fastify'
-import helmet from '@fastify/helmet'
 import cors from '@fastify/cors'
 
 import { isProduction } from '@/lib/env.ts'
 
 import database from '@/plugins/database.ts'
 import shutdown from '@/plugins/shutdown.ts'
+import helmetPlugin from '@/plugins/helmet.ts'
 
 export async function plugins (server: FastifyInstance): Promise<void> {
-  await server.register(helmet, { contentSecurityPolicy: true })
+  await server.register(helmetPlugin)
 
   await server.register(cors, {
-    origin: isProduction() ? /madboks\.com$/ : '*',
-    methods: ['GET', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+    credentials: true,
     maxAge: 1728000,
-    credentials: true
+    methods: ['GET', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+    origin: isProduction() ? /madboks\.org$/ : '*'
   })
 
   await server.register(database)

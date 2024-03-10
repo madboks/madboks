@@ -1,33 +1,35 @@
-import { PrismaClient, Products } from '@prisma/client'
+import { Products } from '@prisma/client'
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
-export const get = (db: PrismaClient) =>
-  async (request: FastifyRequest, response: FastifyReply): Promise<FastifyReply> => {
-    const { code } = request.params as { code: Products['barcode'] }
+export async function get (
+  request: FastifyRequest,
+  response: FastifyReply
+): Promise<FastifyReply> {
+  const { code } = request.params as { code: Products['barcode'] }
 
-    const product = await db.products.findUnique({
-      where: {
-        barcode: code,
+  const product = await request.server.db.products.findUnique({
+    where: {
+      barcode: code
+    },
+    select: {
+      id: true,
+      barcode: true,
+      kg: true,
+      country: {
+        select: {
+          code: true
+        }
       },
-      select: {
-        id: true,
-        barcode: true,
-        kg: true,
-        country: {
-          select: {
-            code: true,
-          }
-        },
-        vegetable: {
-          select: {
-            id: true,
-          }
+      vegetable: {
+        select: {
+          id: true
         }
       }
-    })
+    }
+  })
 
-    if (product === null) {
-      return response
+  if (product === null) {
+    return await response
       .code(404)
       .send({
         error: false,
@@ -38,12 +40,12 @@ export const get = (db: PrismaClient) =>
         }]
 
       })
-    }
-
-    return response
-      .code(200)
-      .send({
-        error: false,
-        data: product
-      })
   }
+
+  return await response
+    .code(200)
+    .send({
+      error: false,
+      data: product
+    })
+}

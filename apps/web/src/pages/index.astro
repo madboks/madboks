@@ -3,5 +3,14 @@ import Layout from '../layouts/default.astro';
 ---
 
 <Layout>
-  Madboks
+  <button type='button' data-button>Click me</button>
 </Layout>
+
+
+<script>
+  const buttons = document.querySelectorAll('[data-button]');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => console.log('test'));
+  });
+</script>

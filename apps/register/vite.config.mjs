@@ -22,6 +22,7 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       https: false,
+      port: env.PORT ?? 9001,
     },
     define: {
       __APP_ENV__: env.APP_ENV

@@ -34,7 +34,7 @@
     "yarn": ">= 4.0.2"
   },
   "scripts": {
-    "dev": "astro dev",
+    "dev": "PORT=8000 astro dev",
     "lint": "astro check",
     "lint:type": "astro check",
     "lint:fix": "",

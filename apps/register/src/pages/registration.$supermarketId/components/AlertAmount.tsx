@@ -4,11 +4,11 @@ import { type Vegetables } from '@prisma/client'
 
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog'
 
-type AlertProps = {
-  isOpen: boolean,
-  kg: number,
-  vegetable: string,
-  vegetables?: Pick<Vegetables, 'id' | 'name' | 'guideline'>[]
+interface AlertProps {
+  isOpen: boolean
+  kg: number
+  vegetable: string
+  vegetables?: Array<Pick<Vegetables, 'id' | 'name' | 'guideline'>>
   onConfirm?: () => void
   onCancel?: () => void
 }
@@ -19,7 +19,7 @@ export function AlertAmount ({
   vegetable,
   vegetables,
   onConfirm = () => {},
-  onCancel = () => {},
+  onCancel = () => {}
 }: AlertProps) {
   const vegetableName = vegetables?.find(({ name }) => name === vegetable)?.name
 

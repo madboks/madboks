@@ -8,7 +8,7 @@ import { useBarcode } from '@/hooks/useBarcode'
 
 import { RegisterForm, type RegisterFormProps } from './components/RegisterForm'
 
- import { type LoaderType as registrationLoaderType } from '@/pages/registration/loader'
+import { type LoaderType as registrationLoaderType } from '@/pages/registration/loader'
 import { useDebounce } from '@/hooks/useDebounce'
 
 const FormSchema = z.object({
@@ -29,7 +29,7 @@ const FormSchema = z.object({
 })
 
 export function Component () {
-  const { vegetables, countries } = useRouteLoaderData('registration') as registrationLoaderType;
+  const { vegetables, countries } = useRouteLoaderData('registration') as registrationLoaderType
 
   const [barcode, setBarcode] = React.useState<string | undefined>()
   const [product, setProduct] = React.useState<RegisterFormProps['product'] | undefined>()
@@ -65,18 +65,16 @@ export function Component () {
           ...rest
         })
       })
-
   }, [barcodeDebounced])
 
   const handleBarcodeError = (error: string) => console.log(error)
 
   const handleBarcodeChange = (code: string) => {
-    if (isNaN(Number(code)))
-      return console.log(code)
+    if (isNaN(Number(code))) { return console.log(code) }
 
     if (code.length < 4) {
       setProduct(undefined)
-      return;
+      return
     }
 
     setBarcode(code)
@@ -88,7 +86,7 @@ export function Component () {
 
   return (
     <>
-      <div className="grow flex flex-col">
+      <div className='grow flex flex-col'>
         <div>
           <span className='font-semibold text-sm'>Camera</span>
           <span className='text-xs'> {videoDevice?.label}</span>

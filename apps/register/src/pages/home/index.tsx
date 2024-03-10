@@ -7,7 +7,7 @@ import { MENU } from '@/consts/menu'
 
 export function Component () {
   return (
-    <ul className="space-y-8 mt-8">
+    <ul className='space-y-8 mt-8'>
       {MENU.map(item => (
         <li key={item.link}>
           <Button asChild className='px-8 py-6 w-full flex flex-row'>

@@ -27,9 +27,9 @@ hints.set(DecodeHintType.POSSIBLE_FORMATS, formats)
 export const BarcodeScanner = (
   { device, onChange, onError }:
   {
-    device: string,
-    onChange: (barcode: string) => void,
-    onError: (error: string) => void,
+    device: string
+    onChange: (barcode: string) => void
+    onError: (error: string) => void
   }
 ) => {
   const { ref } = useZxing({
@@ -39,12 +39,12 @@ export const BarcodeScanner = (
     onDecodeResult (result) {
       onChange(result.getText())
     },
-    onDecodeError(error) {
+    onDecodeError (error) {
       onError(error.message)
     },
-    onError(error) {
+    onError (error) {
       onError((error as TypeError).message)
-    },
+    }
   })
 
   return (

@@ -4,7 +4,7 @@ import React from 'react'
 export function useBarcode () {
   return {
     create: React.useCallback(async (barcode: string) => {
-      return await post({ url: `items` })
+      return await post({ url: 'items' })
     }, [])
   }
 };

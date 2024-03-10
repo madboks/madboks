@@ -4,7 +4,7 @@ interface FetchProps {
   data?: unknown
 }
 
-export type GetResponse<T> = {
+export interface GetResponse<T> {
   data: T
   error: boolean
 

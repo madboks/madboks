@@ -25,7 +25,7 @@ const CLASS_TEXT = `
   after:transition-transform after:duration-300 after:ease-in-out
   after:group-hover:translate-x-full
 `
-type MenuProps = {
+interface MenuProps {
   onSelectedItem: () => void
 }
 

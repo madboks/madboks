@@ -6,9 +6,8 @@ import { Button } from '@/components/ui/button'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import { type LoaderType as registrationLoaderType } from './loader'
 
-
 export function Component () {
-  const { supermarkets } = useLoaderData() as registrationLoaderType;
+  const { supermarkets } = useLoaderData() as registrationLoaderType
 
   const { supermarketId } = useParams()
 
@@ -35,10 +34,9 @@ export function Component () {
                 <span className='pl-4 font-medium w-32'>{market.name}</span>
               </NavLink>
             </Button>)}
-        </div>
-      }
+        </div>}
       <React.Suspense>
-        <div className="grow flex flex-col">
+        <div className='grow flex flex-col'>
           <Outlet />
         </div>
       </React.Suspense>

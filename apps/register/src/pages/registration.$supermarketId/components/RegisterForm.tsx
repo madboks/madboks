@@ -18,12 +18,12 @@ import { IconClose } from '@/components/icons/close'
 import { AlertAmount } from './AlertAmount'
 import { Checkbox } from '@/components/ui/checkbox'
 
-type RegisterFormProduct = {
-  id: string;
-  barcode: string;
-  vegetableId?: string;
-  countryCode?: string;
-  kg: number;
+interface RegisterFormProduct {
+  id: string
+  barcode: string
+  vegetableId?: string
+  countryCode?: string
+  kg: number
 }
 
 type Vegetable = Pick<Vegetables, 'id' | 'name' | 'guideline'>
@@ -53,18 +53,18 @@ export function RegisterForm ({
   vegetables = [],
   onBarcodeChange = () => {},
   onReset = () => {},
-  onSubmit,
+  onSubmit
 }: RegisterFormProps) {
   const [vegetablesSelectorOpen, setVegetablesSelectorOpen] = React.useState(false)
   const [countriesSelectorOpen, setCountriesSelectorOpen] = React.useState(false)
   const [alertIsOpen, setOpenAlert] = React.useState(false)
 
-  const inputAmountRef = React.useRef<HTMLInputElement | null>(null);
+  const inputAmountRef = React.useRef<HTMLInputElement | null>(null)
 
   const defaultValues = {
-    barcode: product ? product.barcode : barcode ? barcode : '',
-    vegetableId: product ? product.vegetableId : '',
-    countryCode: product ? product.countryCode : '',
+    barcode: (product != null) ? product.barcode : barcode || '',
+    vegetableId: (product != null) ? product.vegetableId : '',
+    countryCode: (product != null) ? product.countryCode : ''
   }
 
   const selectedVegetable = findVegetable(vegetables, product?.vegetableId)
@@ -75,7 +75,7 @@ export function RegisterForm ({
     defaultValues: {
       ...defaultValues,
       kg: product?.kg,
-      amount: 1,
+      amount: 1
     }
   })
 
@@ -95,7 +95,6 @@ export function RegisterForm ({
         barcode: `unknown-${vegetable.name.toLowerCase()}`
       })
     }
-
   }
 
   return (
@@ -155,7 +154,7 @@ export function RegisterForm ({
                     <Button
                       variant='outline'
                       role='combobox'
-                      disabled={!!product}
+                      disabled={!(product == null)}
                       className={cn(
                         'w-full justify-between',
                         !field.value && 'text-muted-foreground'
@@ -208,7 +207,7 @@ export function RegisterForm ({
                     <Button
                       variant='outline'
                       role='combobox'
-                      disabled={!!product}
+                      disabled={!(product == null)}
                       className={cn(
                         'w-full justify-between',
                         !field.value && 'text-muted-foreground'
@@ -289,7 +288,7 @@ export function RegisterForm ({
                         step='.01'
                         className='pr-8'
                         {...field}
-                        disabled={!!product}
+                        disabled={!(product == null)}
                       />
                       <div className='text-sm font-bold absolute top-1/2 right-2 transform -translate-y-1/2 text-muted-foreground'>
                         kg
@@ -312,7 +311,8 @@ export function RegisterForm ({
               type='submit'
               className='w-full md:w-2/3'
               disabled={!form.formState.isValid}
-            >Submit</Button>
+            >Submit
+            </Button>
           </div>
         </form>
       </Form>

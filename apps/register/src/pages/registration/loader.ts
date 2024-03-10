@@ -1,13 +1,13 @@
-import { json } from "react-router-dom";
+import { json } from 'react-router-dom'
 
 import type { Supermarkets, Vegetables, Countries } from '@prisma/client'
 
-import { get } from "@/utils/fetch";
+import { get } from '@/utils/fetch'
 
-export type LoaderType = {
-  supermarkets: Supermarkets[];
-  vegetables: Vegetables[];
-  countries: Countries[];
+export interface LoaderType {
+  supermarkets: Supermarkets[]
+  vegetables: Vegetables[]
+  countries: Countries[]
 }
 
 export async function loader () {
@@ -15,17 +15,16 @@ export async function loader () {
     const [supermarkets, vegetables, countries] = await Promise.all([
       get({ url: 'supermarkets' }),
       get({ url: 'vegetables' }),
-      get({ url: 'countries' }),
+      get({ url: 'countries' })
     ])
 
     return json({
       supermarkets: supermarkets.data,
       vegetables: vegetables.data,
       countries: countries.data
-    }, { status: 200 });
+    }, { status: 200 })
   } catch (error) {
-    console.error(error);
-    throw new Response('Not Found', { status: 404 });
+    console.error(error)
+    throw new Response('Not Found', { status: 404 })
   }
 }
-

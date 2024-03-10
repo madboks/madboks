@@ -21,7 +21,7 @@ export const items = z.object({
   kg: z
     .coerce
     .number({
-      invalid_type_error: "You must write the amount of kg",
+      invalid_type_error: 'You must write the amount of kg'
     })
     .gt(0, {
       message: 'The minimum amount in kg is 0'

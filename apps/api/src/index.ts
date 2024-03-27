@@ -2,7 +2,8 @@ import Fastify, { type FastifyInstance } from 'fastify'
 import { parse } from 'qs'
 
 import { isProduction } from '@/lib/env.ts'
-import { UUID } from '@/lib/uuid.ts'
+import { uuid } from '@/lib/uuid.ts'
+
 import { app } from '@/app.ts'
 
 interface ServerLogger {
@@ -24,7 +25,7 @@ async function runServer (transport?: ServerLogger): Promise<FastifyInstance> {
       }
     },
     disableRequestLogging: isProduction(),
-    genReqId: () => UUID(),
+    genReqId: () => uuid(),
     ignoreTrailingSlash: false,
     logger: {
       level: 'info',

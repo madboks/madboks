@@ -1,7 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "typeRoots": ["node_modules/@types"],
     "allowJs": true,
     "alwaysStrict": true,
     "checkJs": false,
@@ -16,8 +15,8 @@
       "dom.iterable",
       "esnext"
     ],
-    "module": "es2022",
-    "moduleResolution": "node",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "newLine": "lf",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
@@ -33,6 +32,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "target": "ES2019",
+    "typeRoots": ["node_modules/@types"],
     "useUnknownInCatchVariables": false
   }
 }

@@ -4,7 +4,11 @@ API to manage the logic about registering process new packages with food from th
 
 ## Database Schema
 
-[Miro board](https://miro.com/app/embed/uXjVNeWi5hw=/?pres=1&frameId=3458764565852927320&embedId=208808018491)
+[Notion page](https://www.notion.so/madboks/DB-proposal-e255e212d31a438bbcb13160579bf546?pvs=4)
+
+## API SChema
+
+The scheme and implementation of the API follows the specification [JSON:api](https://jsonapi.org/format/) for methods, payload, etc.
 
 ## Development
 

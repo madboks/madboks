@@ -1,0 +1,3 @@
+GET http://{{$dotenv API_HOST}}:{{$dotenv API_PORT}}/api/healthcheck
+Accept: application/json
+Content-type: application/json

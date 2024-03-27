@@ -35,33 +35,16 @@
   },
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "lint": "ts-standard --ext ts,tsx .",
+    "lint": "",
     "lint:type": "tsc --noEmit",
-    "lint:fix": "ts-standard --ext ts,tsx --fix .",
+    "lint:fix": "",
     "build": "vite build",
     "preview": "vite preview",
     "cleanup": "rm -rf node_modules yarn.lock && yarn cache clean"
   },
   "dependencies": {
-    "@fontsource/poppins": "latest",
-    "@hookform/resolvers": "latest",
-    "@radix-ui/react-alert-dialog": "latest",
-    "@radix-ui/react-avatar": "latest",
-    "@radix-ui/react-checkbox": "latest",
-    "@radix-ui/react-dialog": "latest",
-    "@radix-ui/react-label": "latest",
-    "@radix-ui/react-popover": "latest",
-    "@radix-ui/react-scroll-area": "latest",
-    "@radix-ui/react-slot": "latest",
-    "class-variance-authority": "latest",
-    "clsx": "latest",
-    "cmdk": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "react-hook-form": "latest",
-    "react-media-devices": "latest",
-    "react-zxing": "latest",
-    "zod": "latest"
+    "react-dom": "latest"
   },
   "devDependencies": {
     "@types/react": "latest",
@@ -70,9 +53,7 @@
     "autoprefixer": "latest",
     "postcss": "latest",
     "react-router-dom": "latest",
-    "tailwind-merge": "latest",
     "tailwindcss": "latest",
-    "ts-standard": "latest",
     "typescript": "latest",
     "vite": "latest"
   },

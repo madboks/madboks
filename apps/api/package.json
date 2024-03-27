@@ -36,9 +36,9 @@
   "scripts": {
     "dev": "node --env-file=.env --import tsx --watch --watch-preserve-output src/index.ts",
     "db:reset": "yarn run prisma migrate reset --force",
-    "lint": "ts-standard --ext ts,tsx .",
+    "lint": "",
     "lint:type": "tsc --noEmit",
-    "lint:fix": "ts-standard --ext ts --fix .",
+    "lint:fix": "",
     "build": "",
     "cleanup": "rm -rf node_modules yarn.lock && yarn cache clean"
   },
@@ -56,7 +56,6 @@
     "@types/qs": "latest",
     "pino-pretty": "latest",
     "prisma": "latest",
-    "ts-standard": "latest",
     "tsx": "latest",
     "typescript": "latest"
   },

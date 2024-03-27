@@ -26,7 +26,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Editor's files
-.vscode
 madboks.code-workspace
 
 # Dependency directories

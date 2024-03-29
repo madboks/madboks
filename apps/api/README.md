@@ -4,7 +4,10 @@ API to manage the logic about registering process new packages with food from th
 
 ## Database Schema
 
-[Notion page](https://www.notion.so/madboks/DB-proposal-e255e212d31a438bbcb13160579bf546?pvs=4)
+>[Notion page](https://www.notion.so/madboks/DB-917e7d9f14814297999684e6639af9e4?pvs=4)
+
+>[Shifts DB](ttps://www.notion.so/madboks/Shift-booking-fe9446ef3b9c4f0ba024acac41c70f24?pvs=4)
+- [Model in mermaid](https://mermaid.live/edit#pako:eNqNUVtrgzAU_ivhPKsYLzHmbWyOFYqO1RU2AiPUdJVNLVZhnfrfF9M63A2WhwPnu-Uj6WBTZRIYyPoqF8-1KHiJ1InWUZyivjfNvkOrm8V1ytBOHObkMJI9WiaXF-kiiRnKy1-8HPT6pDPSh9uIwyzpPGGdLO_jNIruTjoOU_onMTf9Lf_e9DQ1Okk46NWculTbr1V-1P2nUU8woJB1IfJMPWk3YhyanSzkaOCQifqFAy8HpRNtU62O5QZYU7fSgHafiUaePwHYVrweFLoXJbAO3oCZnkOswHccj_ie7VLbN-AIjIRW6GKCKfVtElCXDga8V5VKwFaAg5BiEhLsUOr5jo571OR45_ABrCiRjg)
 
 ## API SChema
 

@@ -78,7 +78,7 @@ model Shift {
 
   shiftType     ShiftType @relation(fields: [shiftTypeId], references: [id], onDelete: Cascade)
   event         Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
-  volunteer     VolunteerShifts[]
+  volunteers    VolunteerShifts[]
   shiftTypeId   String // relation scalar field (used in the `@relation` attribute above)
   eventId       String // relation scalar field (used in the `@relation` attribute above)
 

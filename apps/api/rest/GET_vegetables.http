@@ -1,9 +1,0 @@
-GET http://{{$dotenv API_HOST}}:{{$dotenv API_PORT}}/api/vegetables
-Accept: application/json
-Content-type: application/json
-
-###
-
-GET http://{{$dotenv API_HOST}}:{{$dotenv API_PORT}}/api/vegetables?filter[name]=pomelo
-Accept: application/json
-Content-type: application/json

@@ -4,9 +4,6 @@ import {
   RouterProvider
 } from 'react-router-dom'
 
-import '@fontsource/poppins'
-import '@fontsource/poppins/600.css'
-import '@fontsource/poppins/900.css'
 import './index.css'
 
 import { router } from './router'

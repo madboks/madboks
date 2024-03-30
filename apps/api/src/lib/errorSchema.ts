@@ -1,13 +1,7 @@
-export interface ErrorSchema {
+type ErrorSchema = {
   type: string
   required: string[]
   properties: Record<string, unknown>
-}
-
-export interface DatabaseError {
-  code: string | undefined
-  detail: string | undefined
-  message: string | undefined
 }
 
 function schema (status = 400): ErrorSchema {

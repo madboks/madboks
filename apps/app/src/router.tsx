@@ -5,6 +5,6 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <p>Hi! You are in an app route</p>,
-    errorElement: <p>THis is an app error</p>,
+    errorElement: <p>This is an app error</p>,
   }
 ])

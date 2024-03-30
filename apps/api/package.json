@@ -46,13 +46,16 @@
     "seed": "tsx prisma/seeds/index.ts"
   },
   "dependencies": {
+    "@fastify/cookie": "latest",
     "@fastify/cors": "latest",
     "@prisma/client": "latest",
     "fastify": "latest",
     "helmet": "latest",
+    "jsonwebtoken": "latest",
     "qs": "latest"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "latest",
     "@types/qs": "latest",
     "pino-pretty": "latest",
     "prisma": "latest",

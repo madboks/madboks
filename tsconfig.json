@@ -1,5 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  "include": [
+    "env.d.ts"
+  ],
   "compilerOptions": {
     "allowJs": true,
     "alwaysStrict": true,

@@ -4,4 +4,24 @@ import Layout from '../layouts/default.astro';
 
 <Layout>
   Public website for Madboks
+
+  <p>
+    <button type='button' data-action='login'>Sign up/Sign in</button>
+  </p>
 </Layout>
+
+<script>
+  const $loginBtn = document.querySelector<HTMLButtonElement>('[data-action="login"]')
+  $loginBtn?.addEventListener('click', async () => {
+    const call = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+
+    const data = await call.json()
+
+    window.location.href = data.url
+  })
+</script>

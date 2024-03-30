@@ -6,7 +6,7 @@
   "include": [
     "src/**/*.ts",
     "prisma/**/*.ts",
-    "globals.d.ts"
+    "env.d.ts"
   ],
   "compilerOptions": {
     "baseUrl": ".",

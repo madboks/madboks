@@ -1,15 +1,14 @@
 import fp from 'fastify-plugin'
-// import helmet from '@fastify/helmet'
 import { type FastifyPluginAsync } from 'fastify'
-import helmet from 'helmet'
+import helmetLib from 'helmet'
 
 import { isProduction } from '@/lib/env.ts'
 
 type HelmetErrorHandler = (err?: unknown) => void
 
-const helmetPlugin: FastifyPluginAsync = fp(async (server) => {
+export const helmet: FastifyPluginAsync = fp(async (server) => {
   server.addHook('onRequest', (request, reply, next) => {
-    return helmet({
+    return helmetLib({
       contentSecurityPolicy: {
         directives: {},
         reportOnly: !isProduction(),
@@ -21,5 +20,3 @@ const helmetPlugin: FastifyPluginAsync = fp(async (server) => {
     })(request.raw, reply.raw, next as HelmetErrorHandler)
   })
 })
-
-export default helmetPlugin

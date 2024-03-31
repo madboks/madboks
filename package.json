@@ -35,6 +35,7 @@
   "scripts": {
     "githooks": "husky install",
     "dev": "yarn workspaces foreach --all --exclude @madboks/ingestor --verbose --parallel --interlaced run dev",
+    "build": "yarn workspaces foreach --all --exclude @madboks/ingestor --verbose --parallel --interlaced run build",
     "lint": "yarn workspaces foreach --all --verbose --parallel --interlaced run lint",
     "lint:type": "yarn workspaces foreach --all --verbose --parallel --interlaced run lint:type",
     "lint:fix": "yarn workspaces foreach --all --verbose --parallel --interlaced run lint:fix",

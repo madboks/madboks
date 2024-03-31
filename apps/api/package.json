@@ -39,7 +39,7 @@
     "lint": "",
     "lint:type": "tsc --noEmit",
     "lint:fix": "",
-    "build": "",
+    "build": "yarn run prisma generate",
     "cleanup": "rm -rf node_modules yarn.lock && yarn cache clean"
   },
   "prisma": {

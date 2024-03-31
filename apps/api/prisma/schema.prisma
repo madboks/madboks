@@ -67,6 +67,7 @@ model Volunteer {
 
   name          String
   phone         String
+  email         String     @unique
   shifts        VolunteerShifts[]
 
   createdAt     DateTime   @default(now())

@@ -1,4 +1,6 @@
 # Project Directories
+dist
+
 .husky/_
 
 # env files

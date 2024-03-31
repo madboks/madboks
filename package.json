@@ -33,13 +33,14 @@
     "yarn": ">= 4.0.2"
   },
   "scripts": {
-    "githooks": "husky install",
+    "postinstall": "husky init",
     "dev": "yarn workspaces foreach --all --exclude @madboks/ingestor --verbose --parallel --interlaced run dev",
     "lint": "yarn workspaces foreach --all --verbose --parallel --interlaced run lint",
     "lint:type": "yarn workspaces foreach --all --verbose --parallel --interlaced run lint:type",
     "lint:fix": "yarn workspaces foreach --all --verbose --parallel --interlaced run lint:fix",
     "cleanup": "yarn workspaces foreach --all --verbose --parallel --interlaced run cleanup && yarn cache clean",
-    "assassin": "yarn run cleanup && rm -rf node_modules yarn.lock"
+    "assassin": "yarn run cleanup && rm -rf node_modules yarn.lock",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",

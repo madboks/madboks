@@ -50,10 +50,10 @@ model ShiftType {
 }
 
 model VolunteerShifts {
-  volunteer       Volunteer @relation(fields: [volunteerId], references: [id])
-  shift           Shift     @relation(fields: [shiftId], references: [id])
-  volunteerId     String // relation scalar field (used in the `@relation` attribute above)
-  shiftId         String // relation scalar field (used in the `@relation` attribute above)
+  volunteer     Volunteer @relation(fields: [volunteerId], references: [id])
+  shift         Shift     @relation(fields: [shiftId], references: [id])
+  volunteerId   String // relation scalar field (used in the `@relation` attribute above)
+  shiftId       String // relation scalar field (used in the `@relation` attribute above)
 
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt

@@ -10,71 +10,80 @@ All these apps are served by the [api](./apps/api/README.md) which uses a `Postg
 ## Development
 
 ### Prerequisites
-- Clone project in your local
-- Decide what type of development you will do between these options: 
- * Docker agnostic
-    no docker involved, installing npm, yarn or anything needed to make the project run
- * Some docker involved to execute the database and/or the rest of the stack, but code executed locally
- * Docker + docker-compose
+After cloning the repository, you can start coding right away if you have `Docker` and `Visual Studio Code` installed. Our advice is to use `docker`, but it's something personal [9 reasons why](https://dev.to/danielgaldev/9-reasons-why-you-should-use-docker-as-a-development-environment-474j)
 
-
-#### Running locally
-We advice is to use `docker`, but it's something personal [9 reasons why](https://dev.to/danielgaldev/9-reasons-why-you-should-use-docker-as-a-development-environment-474j)
-
-- Set up a `PostgreSQL` database
-- Install dependencies with matching versions to the project
-
-The current project is running in node `20.11.0` as you can see in the file `.nvmrc`. You need to install this node version using `nvm` or `fnm`.
-
-When you have this node version installed, activate `yarn` with 
-
-```bash
-> corepack enable yarn
+To use any of the scripts in the repository is necessary to change the access mode using
+```bash 
+> chmod -R +x scripts/
 ```
 
-- Run scripts/install.sh <db_host> <db_port> <db_user> at the root directory. This will set up environment variables and run yarn install
-- Use ./scripts/run.sh <app> <command> to start the app and run scripts defined at package.json. This will make sure that the .env file exists before executing yarn workspace @madboks/<app> run <command>  
-Example to start the dev enviroment for api  api dev: `./scripts/run.sh api dev`
+#### Running code from your local
 
-#### Running with Docker
+#### Set up a `PostgreSQL` database. 
+* With docker 
+Start the database service with docker compose.
 
-To run the database with docker, you must have `docker` and `docker-compose` installed. Once installed, run this command from the root directory to create and run the container.
+```bash 
+> docker compose up postgres
+```
+* or without docker:
+Create a `PostgreSQL` database called `madboks` to be used by the api, in either your local or a remote host and make sure to remember host url, db user and db password.
+
+#### Install dependencies
+* Run scripts/install.sh
+Provide the params of your database or leave empty if you want to use the default values
+
+```bash 
+> scripts/install.sh -h
+ Usage: scripts/install.sh <db_host> <db_port> <db_user>
+ Description: This script sets up environment variables and installs dependencies.
+ Options:
+   -h, --help          Display this help message
+   <db_host>           Database host (default: 127.0.0.1)
+   <db_port>           Database port (default: 4433)
+
+> scripts/install.sh <db_host> <db_port> <db_user>
+```
+
+* or use yarn and .env files
+If you take a look in the apps inside `apps` directory, you should see some `.env.sample` files. Copy & paste `.env.sample` and rename to `.env.` if it doesn't exist already. In the file, every variable enclosed like this `${}` is a reference to your global environment variables. Continue with either declaring those variables globally or override them in the file. Notice that `.env.` files won't be added to the repository as they are included in .gitignore. 
+
+After setting the variables, install dependencies with matching versions to the project and run dev command. The current project is running in node `20.11.0` as you can see in the file `.nvmrc`. You need to install this node version using `nvm` or `fnm` and activate yarn. 
+
+```bash
+> nvm install 20.11.0
+> corepack enable yarn
+> yarn install
+```
+#### Run apps scripts
+Each app is a workspace in yarn. They have their own package.json where commands (scripts) like dev, build, lint are defined. 
+* Run using scripts/run.sh
+
+Use ./scripts/run.sh <app> <command> to run the command of your choice. This will make sure that the .env file exists before executing `yarn workspace @madboks/<app> run <command>`
+
+Example on how to start the dev environment for the api : 
+```bash
+> ./scripts/run.sh api dev
+```
+
+* Run using yarn
+You need to make sure that .env exists to those commands that uses it like `yarn workspace @madboks/api run dev`
+
+#### Developing
+
+* Use `Visual Studio Code` and docker compose
+This option is as easy as running
 
 ```bash
 > docker-compose up --detach
 ```
+And changes in the local files will be reflected in the container in no time
 
-This command will download the `PostgreSQL` image, and all of the other apps. All of the containers will be running in the background.
+* Using yarn workspace @madboks/<workspace> run dev and any IDE of your choice
+Command `dev` is available for all workspaces, and it starts them watching out for any new changes. So if you get that command running for any of the workspaces, then you can start changing code. Check the README.md for each workspace, as they have their own requirements.
 
-You can stop all of the services and just keep the database. Using scripts/install.sh without params, it will set the environment variables accordingly 
-
-### Env files
-
-It is possible to set environment variables within every app. You can set them in the different `.env` files. There is an `.env.sample` in every workspace. Copy & paste this file and rename to `.env.`, if it doesn't exist already, and fill the information for the env vars there. These won't be added to the repository, so make sure you include need information for deployment
-
-### Install node dependencies
-
-Docker images are already set to use the right versions. Check the guide for Running locally
-
-### Install package-specific things
-
-To run one of the apps, check the README inside the apps
-
-[API](./apps/api/README.md)
-[APP](./apps/app/README.md)
-
-### Run scripts
-
-Sometimes there are some scripts/tasks that you can run from the root directory. You can take a look at all of them in `package.json`. For example, if you want to run the `dev` script on all packages, you can run:
-
-```tap
-> yarn run dev
-```
-
-but if you want to run the `dev` script in just one, like `api`, using the package name, you can run this:
-
-```tap
-> yarn workspace @madboks/api run dev
+```bash
+> yarn workspace @madboks/<workspace> run dev
 ```
 
 ## Deploy

@@ -1,8 +1,8 @@
-# Web
-Madboks: Public website
+# Register
+Madboks: The app to register all food
 
 ## Structure
-This workspace builds using `Astro`
+This workspace builds using `vite.js`
 ## Developing
 
 There are some scripts/tasks that you can run from the root directory. You can take a look at all of them in `package.json`. 

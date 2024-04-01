@@ -1,33 +1,35 @@
 # Madboks
 
-Repository that hosts all Madboks apps: 
+A repository that hosts all Madboks apps: 
 - The web that functions as a home page for the org [web](./apps/web/README.md)
-- The app for registering food [register](./apps/register/README.md)
-- The app for the rest of utilities like event management, volunteers event sign up and box bookings [app](./apps/app/README.md)
+- The app for registering the food [register](./apps/register/README.md)
+- The app for the rest of the utilities like event management, volunteer event sign-up, and box bookings [app](./apps/app/README.md)
 
-All these apps are served by the [api](./apps/api/README.md) which uses a `PostgreSQL` database
+All these apps are served by the [api](./apps/api/README.md), which uses a `PostgreSQL` database
 
 ## Development
 
 ### Prerequisites
-After cloning the repository, you can start coding right away if you have `Docker` and `Visual Studio Code` installed. Our advice is to use `docker`, but it's something personal [9 reasons why](https://dev.to/danielgaldev/9-reasons-why-you-should-use-docker-as-a-development-environment-474j)
+After cloning the repository, if you have `Docker` and `Visual Studio Code` installed, you can start coding right away. Our advice is to use `docker`, but it's something personal. Here are [9 reasons why](https://dev.to/danielgaldev/9-reasons-why-you-should-use-docker-as-a-development-environment-474j)
 
-To use any of the scripts in the repository is necessary to change the access mode using
+To use any of the scripts in the repository is necessary to change the access mode
 ```bash 
 > chmod -R +x scripts/
 ```
 
-#### Running code from your local
+### Running code from your local
 
 #### Set up a `PostgreSQL` database. 
-* With docker 
-Start the database service with docker compose.
+* with Docker
+
+Start the database service with `docker-compose`.
 
 ```bash 
 > docker compose up postgres
 ```
-* or without docker:
-Create a `PostgreSQL` database called `madboks` to be used by the api, in either your local or a remote host and make sure to remember host url, db user and db password.
+* or without Docker
+
+Create a `PostgreSQL` database called `madboks` to be used by the api, in either your local or a remote host and make sure to remember host URL, user and password.
 
 #### Install dependencies
 * Run scripts/install.sh

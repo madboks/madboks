@@ -18,7 +18,6 @@ async function auth (req: FastifyRequest, res: FastifyReply) {
   }
 
   const payload = verifyJWT(cookie.value)
-  console.log('[DEBUG] ~ authorize ~ cookie:', payload)
 }
 
 export const authorization: FastifyPluginAsync = fp(async (server) => {

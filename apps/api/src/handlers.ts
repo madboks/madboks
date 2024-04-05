@@ -7,7 +7,7 @@ function manageErrorHandler (error: FastifyError, request: FastifyRequest, respo
 
   if (error instanceof AuthError) {
     return response
-      .status(401)
+      .status(error.code)
       .send({
         error: true,
         errors: {
@@ -19,7 +19,7 @@ function manageErrorHandler (error: FastifyError, request: FastifyRequest, respo
   }
 
   return response
-    .status(500)
+    .status(Number(error.code) ?? GenericError.errorCode)
     .send({
       error: true,
       errors: {

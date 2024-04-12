@@ -1,6 +1,6 @@
 import type { FastifyError, FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 
-import { AuthError, GenericError } from '@/lib/errors'
+import { AuthError, GenericError } from '@/utils/errors'
 
 function manageErrorHandler (error: FastifyError, request: FastifyRequest, response: FastifyReply): FastifyReply {
   request.log.error(error)

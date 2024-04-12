@@ -1,6 +1,6 @@
 import jwt, { type SignOptions } from 'jsonwebtoken'
 
-import { AuthError } from '@/lib/errors'
+import { AuthError } from '@/utils/errors'
 
 type AuthPayload = {
   id: string
@@ -12,7 +12,7 @@ type JWTVerify = {
   email: string
 }
 
-export function generateJWT(
+export function generate(
   subject: string,
   payload: Omit<AuthPayload, 'id'>,
 ): string {
@@ -34,7 +34,7 @@ export function generateJWT(
   )
 }
 
-export function verifyJWT(token: string): AuthPayload {
+export function verify(token: string): AuthPayload {
   try {
     const payload: JWTVerify = jwt.verify(
       token,

@@ -1,4 +1,4 @@
-import errorSchema from "@/lib/errorSchema";
+import errorSchema from "@/utils/errorSchema";
 
 export const GOOGLE_GET_SCHEMA = {
   querystring: {

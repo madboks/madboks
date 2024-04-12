@@ -1,8 +1,8 @@
 import Fastify, { type FastifyInstance } from 'fastify'
 import { parse } from 'qs'
 
-import { isProduction } from '@/lib/env.ts'
-import { uuid } from '@/lib/uuid.ts'
+import { isProduction } from '@/utils/env.ts'
+import { uuid } from '@/utils/uuid.ts'
 
 import { app } from '@/app.ts'
 

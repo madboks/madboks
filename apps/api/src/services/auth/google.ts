@@ -1,7 +1,8 @@
-import { generateJWT } from '@/lib/auth'
-import { isProduction } from '@/lib/env'
-import { GenericError } from '@/lib/errors'
 import type { FastifyReply, FastifyRequest } from 'fastify'
+
+import { isProduction } from '@/utils/env'
+import { GenericError } from '@/utils/errors'
+import * as jwt from '@/utils/jwt'
 
 const MONTH_IN_SECONDS = new Date(Date.now() + (30 * 24 * 60 * 60 * 1000))
 const WEEK_IN_SECONDS = 604800
@@ -16,8 +17,9 @@ type Request = FastifyRequest<{
 
 async function fetchUserInfo (code: string): Promise<Response> {
   // TODO: Add pkce login check
+  let response
   try {
-    const response = await fetch('https://oauth2.googleapis.com/token', {
+    response = await fetch('https://oauth2.googleapis.com/token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -30,17 +32,17 @@ async function fetchUserInfo (code: string): Promise<Response> {
         grant_type: 'authorization_code'
       })
     })
-
-    if (response?.ok === false) {
-      throw new GenericError({ cause: 'AUTH_ERROR', code: 503 })
-    }
-
-    const { access_token: accessToken } = await response.json()
-
-    return accessToken
-  } catch {
+  } catch (e){
     throw new GenericError({ cause: 'AUTH_ERROR', code: 503 })
   }
+
+  if (response?.ok === false) {
+    throw new GenericError({ cause: 'AUTH_ERROR', code: 503 })
+  }
+
+  const { access_token: accessToken } = await response.json()
+
+  return accessToken
 }
 
 export async function google (
@@ -67,7 +69,7 @@ export async function google (
   // TODO: save this information in the database or check if the user exists before
   const { given_name: name, email } = await userProfile.json()
 
-  const authToken = generateJWT(
+  const authToken = jwt.generate(
     'XXXXX',
     {
       email
@@ -86,6 +88,7 @@ export async function google (
       expires: MONTH_IN_SECONDS
     })
 
+  console.log('-------------', request.query.redirect)
   if (request.query.redirect) {
     return await response
       .code(302)

@@ -45,6 +45,8 @@ Then, install all dependendies with
 > yarn install
 ```
 
+When you run the `install` command, we run one more script in the background which you can find in our [package.json](./package.json). The script is `postinstall` [link](https://yarnpkg.com/advanced/lifecycle-scripts#postinstall) and runs after installing, updating, or changing a dependency in the project. This script will set up the git hooks and configuration for [Husky](https://typicode.github.io/husky/), a library to manage the different git hooks and the actions we want to run on them (like linters)
+
 ### Install package-specific things
 
 To run one of the apps, check the README inside the apps

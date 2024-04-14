@@ -3,9 +3,9 @@ import type { FastifyReply, FastifyRequest } from 'fastify'
 import { isProduction } from '@/utils/env'
 import { GenericError } from '@/utils/errors'
 import * as jwt from '@/utils/jwt'
-
-const MONTH_IN_SECONDS = new Date(Date.now() + (30 * 24 * 60 * 60 * 1000))
-const WEEK_IN_SECONDS = 604800
+import { METHOD_GET, METHOD_POST } from '@/constants/apiMethods'
+import { GOOGLE_TOKEN, GOOGLE_USER_INFO } from '@/constants/externalEndpoints'
+import { COOKIE_MAX_AGE, COOKIE_EXPIRES } from '@/constants/cookie'
 
 type Request = FastifyRequest<{
   Querystring: {
@@ -19,8 +19,8 @@ async function fetchUserInfo (code: string): Promise<Response> {
   // TODO: Add pkce login check
   let response
   try {
-    response = await fetch('https://oauth2.googleapis.com/token', {
-      method: 'POST',
+    response = await fetch(GOOGLE_TOKEN, {
+      method: METHOD_POST,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
@@ -59,8 +59,8 @@ export async function google (
 
   const accessToken = await fetchUserInfo(request.query.code)
 
-  const userProfile = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-    method: 'GET',
+  const userProfile = await fetch(GOOGLE_USER_INFO, {
+    method: METHOD_GET,
     headers: {
       Authorization: `Bearer ${accessToken}`
     }
@@ -84,11 +84,10 @@ export async function google (
       signed: true,
       sameSite: 'lax',
       secure: isProduction(),
-      maxAge: WEEK_IN_SECONDS,
-      expires: MONTH_IN_SECONDS
+      maxAge: COOKIE_MAX_AGE,
+      expires: COOKIE_EXPIRES
     })
 
-  console.log('-------------', request.query.redirect)
   if (request.query.redirect) {
     return await response
       .code(302)

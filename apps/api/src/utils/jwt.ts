@@ -1,6 +1,7 @@
 import jwt, { type SignOptions } from 'jsonwebtoken'
 
 import { AuthError } from '@/utils/errors'
+import { INVALID_TOKEN } from '@/constants/apiErrors'
 
 type AuthPayload = {
   id: string
@@ -48,7 +49,7 @@ export function verify(token: string): AuthPayload {
     const payloadIntegrity = payload.hasOwnProperty('sub') && payload.hasOwnProperty('email')
 
     if (payloadIntegrity === false){
-      throw new AuthError({ cause: 'INVALID_TOKEN' })
+      throw new AuthError({ cause: INVALID_TOKEN })
     }
 
     return {
@@ -56,6 +57,6 @@ export function verify(token: string): AuthPayload {
       email: payload.email as JWTVerify['email'],
     }
   } catch (error) {
-    throw new AuthError({ cause: 'INVALID_TOKEN' })
+    throw new AuthError({ cause: INVALID_TOKEN })
   }
 }

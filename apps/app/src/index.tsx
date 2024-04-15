@@ -1,19 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import {
-  RouterProvider
-} from 'react-router-dom'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+
+import { Router } from './router'
 
 import './index.css'
 
-import { router } from './router'
-
-const root = document.getElementById('root')
-ReactDOM
-  // @ts-expect-error
-  .createRoot(root)
-  .render(
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
+const $root = document.getElementById('root')
+const Root = createRoot($root!)
+Root.render(
+    <StrictMode>
+      <Router />
+    </StrictMode>
   )
+
+if (import.meta.hot) {
+  import.meta.hot.dispose(() => Root.unmount())
+}

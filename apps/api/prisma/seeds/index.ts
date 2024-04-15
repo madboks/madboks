@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 
-import { isDatabaseDebug } from '@/lib/env.ts'
+import { isDatabaseDebug } from '@/utils/env.ts'
 
 const db = new PrismaClient({
   log: isDatabaseDebug() ? ['query', 'info', 'warn', 'error'] : []

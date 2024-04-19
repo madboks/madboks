@@ -6,7 +6,6 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "globals.d.ts",
     "env.d.ts"
   ],
   "compilerOptions": {

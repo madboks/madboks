@@ -33,7 +33,7 @@
     "yarn": ">= 4.0.2"
   },
   "scripts": {
-    "githooks": "husky install",
+    "postinstall": "husky",
     "dev": "yarn workspaces foreach --all --exclude @madboks/ingestor --verbose --parallel --interlaced run dev",
     "build": "yarn workspaces foreach --all --exclude @madboks/ingestor --verbose --parallel --interlaced run build",
     "lint": "yarn workspaces foreach --all --verbose --parallel --interlaced run lint",
@@ -42,6 +42,7 @@
     "cleanup": "yarn workspaces foreach --all --verbose --parallel --interlaced run cleanup && yarn cache clean",
     "assassin": "yarn run cleanup && rm -rf node_modules yarn.lock"
   },
+  "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",

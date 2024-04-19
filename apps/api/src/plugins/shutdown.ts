@@ -2,7 +2,7 @@ import type { FastifyInstance } from 'fastify'
 
 const EVENTS = ['SIGINT', 'SIGTERM']
 
-async function shutdown (server: FastifyInstance): Promise<void> {
+export async function shutdown (server: FastifyInstance): Promise<void> {
   EVENTS.forEach(event => {
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     process.once(event, async (): Promise<NodeJS.Process> => {
@@ -17,6 +17,4 @@ async function shutdown (server: FastifyInstance): Promise<void> {
       return process.exit()
     })
   })
-};
-
-export default shutdown
+}

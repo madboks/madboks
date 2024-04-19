@@ -12,11 +12,11 @@ export const helmet: FastifyPluginAsync = fp(async (server) => {
       contentSecurityPolicy: {
         directives: {},
         reportOnly: !isProduction(),
-        useDefaults: true
+        useDefaults: true,
       },
       frameguard: false,
       referrerPolicy: { policy: 'same-origin' },
-      xPoweredBy: false
+      xPoweredBy: false,
     })(request.raw, reply.raw, next as HelmetErrorHandler)
   })
 })

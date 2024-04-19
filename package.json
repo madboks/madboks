@@ -1,11 +1,20 @@
 {
   "name": "madboks",
-  "version": "0.0.1",
-  "description": "Madboks: The registration app for Madboks",
-  "license": "MIT",
-  "private": true,
-  "main": "index.js",
   "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "yarn@4.0.2",
+  "description": "Madboks: The registration app for Madboks",
+  "author": {
+    "name": "Jose Manuel Rosa Moncayo",
+    "email": "josemanuel.rosamoncayo+madboks@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/madboks/madboks#readme",
+  "repository": "git+https://github.com/madboks/madboks.git",
+  "bugs": {
+    "url": "https://github.com/madboks/madboks/issues"
+  },
   "keywords": [
     "packages",
     "madboks",
@@ -13,20 +22,12 @@
     "save",
     "registration"
   ],
-  "author": {
-    "name": "Jose Manuel Rosa Moncayo",
-    "email": "josemanuel.rosamoncayo+madboks@gmail.com"
-  },
+  "main": "index.js",
   "contributors": [],
-  "homepage": "https://github.com/madboks/madboks#readme",
-  "repository": "git+https://github.com/madboks/madboks.git",
   "workspaces": [
     "packages/*",
     "apps/*"
   ],
-  "bugs": {
-    "url": "https://github.com/madboks/madboks/issues"
-  },
   "engines": {
     "node": ">= 20.x",
     "npm": ">= 8.13.2",
@@ -36,8 +37,8 @@
     "postinstall": "husky",
     "dev": "yarn workspaces foreach --all --exclude @madboks/ingestor --verbose --parallel --interlaced run dev",
     "lint": "eslint --cache .",
-    "lint:type": "eslint --cache . --fix",
-    "lint:fix": "yarn workspaces foreach --all --verbose --parallel --interlaced run lint:fix",
+    "lint:type": "tsc --noEmit",
+    "lint:fix": "eslint --cache . --fix",
     "cleanup": "yarn workspaces foreach --all --verbose --parallel --interlaced run cleanup && yarn cache clean",
     "assassin": "yarn run cleanup && rm -rf node_modules yarn.lock"
   },
@@ -53,6 +54,5 @@
     "eslint-plugin-react-refresh": "0.4.6",
     "husky": "latest",
     "lint-staged": "latest"
-  },
-  "packageManager": "yarn@4.0.2"
+  }
 }

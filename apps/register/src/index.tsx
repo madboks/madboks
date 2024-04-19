@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
-  RouterProvider
+  RouterProvider,
 } from 'react-router-dom'
 
 import './index.css'
@@ -15,5 +15,5 @@ ReactDOM
   .render(
     <React.StrictMode>
       <RouterProvider router={router} />
-    </React.StrictMode>
+    </React.StrictMode>,
   )

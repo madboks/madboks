@@ -2,7 +2,7 @@ export default {
   mode: 'jit',
   content: [
     './src/index.html',
-    './src/**/*.{ts,tsx}'
+    './src/**/*.{ts,tsx}',
   ],
-  plugins: []
+  plugins: [],
 }

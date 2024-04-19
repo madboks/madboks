@@ -7,7 +7,7 @@ export const HEALTCHECK_GET_SCHEMA = {
       properties: {
         error: {
           type: 'boolean',
-          default: false
+          default: false,
         },
         data: {
           type: 'array',
@@ -18,11 +18,11 @@ export const HEALTCHECK_GET_SCHEMA = {
             type: 'object',
             properties: {
               server: { type: 'boolean' },
-              database: { type: 'boolean' }
-            }
-          }
-        }
-      }
-    }
-  }
+              database: { type: 'boolean' },
+            },
+          },
+        },
+      },
+    },
+  },
 }

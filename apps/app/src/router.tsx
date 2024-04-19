@@ -1,9 +1,9 @@
-import { createElement } from 'react';
-import {RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { createElement } from 'react'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import * as Root from '@/pages/root';
-import * as Login from '@/pages/login';
-import { Dashboard } from './pages/dahsboard';
+import { Dashboard } from './pages/dahsboard'
+import * as Root from '@/pages/root'
+import * as Login from '@/pages/login'
 
 const router = createBrowserRouter([
   {
@@ -36,13 +36,14 @@ const router = createBrowserRouter([
   },
 ])
 
-export function Router () {
+export function Router() {
   return createElement(
-    RouterProvider, { router });
+    RouterProvider,
+    { router },
+  )
 }
 
 // HMR: clean up on module reload
 // https://vitejs.dev/guide/api-hmr
-if (import.meta.hot) {
-  import.meta.hot.dispose(() => router.dispose());
-}
+if (import.meta.hot)
+  import.meta.hot.dispose(() => router.dispose())

@@ -1,25 +1,15 @@
 {
   "name": "@madboks/register",
-  "version": "0.0.1",
-  "description": "Madboks: The app to register all food",
-  "license": "MIT",
-  "private": true,
-  "main": "src/index.js",
   "type": "module",
-  "keywords": [
-    "madboks",
-    "app"
-  ],
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "yarn@4.0.2",
+  "description": "Madboks: The app to register all food",
   "author": {
     "name": "José Manuel Rosa Moncayo",
     "email": "josemanuel.rosamoncayo@gmail.com"
   },
-  "contributors": [
-    {
-      "name": "Jose Manuel Rosa Moncayo",
-      "email": "josemanuel.rosamoncayo+madboks@gmail.com"
-    }
-  ],
+  "license": "MIT",
   "homepage": "https://github.com/madboks/madboks/apps/register#readme",
   "repository": {
     "type": "git",
@@ -28,6 +18,17 @@
   "bugs": {
     "url": "https://github.com/madboks/madboks/issues?q=is%3Aissue+label%register"
   },
+  "keywords": [
+    "madboks",
+    "app"
+  ],
+  "main": "src/index.js",
+  "contributors": [
+    {
+      "name": "Jose Manuel Rosa Moncayo",
+      "email": "josemanuel.rosamoncayo+madboks@gmail.com"
+    }
+  ],
   "engines": {
     "node": ">= 20.x",
     "npm": ">= 8.13.2",
@@ -56,6 +57,5 @@
     "tailwindcss": "latest",
     "typescript": "latest",
     "vite": "latest"
-  },
-  "packageManager": "yarn@4.0.2"
+  }
 }

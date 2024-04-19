@@ -1,8 +1,8 @@
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
-export async function get (
+export async function get(
   request: FastifyRequest,
-  response: FastifyReply
+  response: FastifyReply,
 ): Promise<FastifyReply> {
   return response
     .code(200)
@@ -11,8 +11,8 @@ export async function get (
       data: [
         {
           server: true,
-          database: true
-        }
-      ]
+          database: true,
+        },
+      ],
     })
 }

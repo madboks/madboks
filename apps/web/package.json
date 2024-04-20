@@ -36,9 +36,6 @@
   },
   "scripts": {
     "dev": "PORT=8000 astro dev",
-    "lint": "astro check",
-    "lint:type": "astro check",
-    "lint:fix": "",
     "build": "astro build",
     "cleanup": "rm -rf node_modules yarn.lock && yarn cache clean"
   },

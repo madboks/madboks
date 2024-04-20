@@ -36,9 +36,6 @@
   },
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "lint": "",
-    "lint:type": "tsc --noEmit",
-    "lint:fix": "",
     "build": "vite build",
     "preview": "vite preview",
     "cleanup": "rm -rf node_modules yarn.lock && yarn cache clean"

@@ -4,12 +4,13 @@ export default antfu([
   {
     ignores: [
       'node_modules',
-      '**/.svelte-kit',
-      '**/*.global.js',
     ],
   },
   {
+    files: ['packages/web/**/*.astro'],
     astro: true,
+  },
+  {
     javascript: true,
     jsonc: false,
     jsx: true,

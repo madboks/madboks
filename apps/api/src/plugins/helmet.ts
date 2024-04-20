@@ -1,5 +1,5 @@
 import fp from 'fastify-plugin'
-import { type FastifyPluginAsync } from 'fastify'
+import type { FastifyPluginAsync } from 'fastify'
 import helmetLib from 'helmet'
 
 import { isProduction } from '@/utils/env.ts'

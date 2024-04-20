@@ -1,14 +1,16 @@
+import process from 'node:process'
+
 import jwt, { type SignOptions } from 'jsonwebtoken'
 
 import { AuthError } from '@/utils/errors'
 import { INVALID_TOKEN } from '@/constants/apiErrors'
 
-type AuthPayload = {
+interface AuthPayload {
   id: string
   email: string
 }
 
-type JWTVerify = {
+interface JWTVerify {
   sub: string
   email: string
 }
@@ -29,9 +31,9 @@ export function generate(
       audience: process.env.AUTH_ISSUER,
       issuer: process.env.AUTH_ISSUER,
       header: {
-        kid: process.env.KID
-      }
-    } as SignOptions
+        kid: process.env.KID,
+      },
+    } as SignOptions,
   )
 }
 
@@ -43,20 +45,20 @@ export function verify(token: string): AuthPayload {
       {
         algorithms: [process.env.AUTH_ALGORITHM],
         audience: process.env.AUTH_ISSUER,
-      }
+      },
     ) as JWTVerify
 
-    const payloadIntegrity = payload.hasOwnProperty('sub') && payload.hasOwnProperty('email')
+    const payloadIntegrity = Object.prototype.hasOwnProperty.call(payload, 'sub') && Object.prototype.hasOwnProperty.call(payload, 'email')
 
-    if (payloadIntegrity === false){
+    if (payloadIntegrity === false)
       throw new AuthError({ cause: INVALID_TOKEN })
-    }
 
     return {
       id: payload.sub as JWTVerify['sub'],
       email: payload.email as JWTVerify['email'],
     }
-  } catch (error) {
+  }
+  catch (error) {
     throw new AuthError({ cause: INVALID_TOKEN })
   }
 }

@@ -1,24 +1,22 @@
 import fp from 'fastify-plugin'
-import type { FastifyRequest, FastifyPluginAsync, FastifyReply } from 'fastify'
+import type { FastifyPluginAsync, FastifyRequest } from 'fastify'
 
-import * as jwt from '@/utils/jwt'
+// import * as jwt from '@/utils/jwt'
 import { AuthError } from '@/utils/errors'
 import { INVALID_TOKEN } from '@/constants/apiErrors'
 
-async function auth (req: FastifyRequest, res: FastifyReply) {
+async function auth(req: FastifyRequest) {
   const { session } = req.cookies
 
-  if (!session) {
+  if (!session)
     throw new AuthError({ cause: INVALID_TOKEN })
-  }
 
   const cookie = req.unsignCookie(session)
 
-  if (!cookie.valid || !cookie.value) {
+  if (!cookie.valid || !cookie.value)
     throw new AuthError({ cause: INVALID_TOKEN })
-  }
 
-  const payload = jwt.verify(cookie.value)
+  // const payload = jwt.verify(cookie.value)
   // Check that payload.email and payload.id exists in the database
 }
 

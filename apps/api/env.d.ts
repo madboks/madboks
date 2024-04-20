@@ -1,6 +1,6 @@
-import { type PrismaClient } from '@prisma/client'
-import { type onRequestMetaHookHandler } from 'fastify'
-import { type Algorithm } from 'jsonwebtoken'
+import type { PrismaClient } from '@prisma/client'
+import type { onRequestMetaHookHandler } from 'fastify'
+import type { Algorithm } from 'jsonwebtoken'
 
 declare module 'fastify' {
   interface FastifyInstance {

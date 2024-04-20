@@ -4,12 +4,13 @@ import meService from '@/services/meService'
 
 export type LoginLoaderReturn = Response | true
 
-export async function loader (): Promise<LoginLoaderReturn> {
+export async function loader(): Promise<LoginLoaderReturn> {
   try {
     await meService.me()
 
     return redirect('/')
-  } catch (error) {
+  }
+  catch (error) {
     return true
   }
 }

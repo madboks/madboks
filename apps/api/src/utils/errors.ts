@@ -1,4 +1,4 @@
-type Error = {
+interface Error {
   cause: string
   code?: number
   name?: string
@@ -25,8 +25,8 @@ export class GenericError extends Error {
   constructor({
     cause,
     code = GenericError.errorCode,
-    name = GenericError.errorName
-  }: Error){
+    name = GenericError.errorName,
+  }: Error) {
     super(cause, { cause })
 
     this.name = name

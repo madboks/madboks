@@ -1,3 +1,5 @@
+import process from 'node:process'
+
 import type { FastifyInstance } from 'fastify'
 import cors from '@fastify/cors'
 import fastifyCookie from '@fastify/cookie'

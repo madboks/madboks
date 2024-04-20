@@ -1,8 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "include": [
-    "env.d.ts"
-  ],
   "compilerOptions": {
     "incremental": true,
     "target": "ES2019",
@@ -37,5 +34,8 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "skipLibCheck": true
-  }
+  },
+  "include": [
+    "env.d.ts"
+  ]
 }

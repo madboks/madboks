@@ -1,10 +1,10 @@
-type ErrorSchema = {
+interface ErrorSchema {
   type: string
   required: string[]
   properties: Record<string, unknown>
 }
 
-function schema (status = 400): ErrorSchema {
+function schema(status = 400): ErrorSchema {
   return ({
     type: 'object',
     required: ['error', 'errors'],

@@ -1,3 +1,4 @@
+import process from 'node:process'
 import Fastify, { type FastifyInstance } from 'fastify'
 import { parse } from 'qs'
 

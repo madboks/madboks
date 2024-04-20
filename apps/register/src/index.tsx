@@ -8,9 +8,8 @@ import './index.css'
 
 import { router } from './router'
 
-const root = document.getElementById('root')
+const root = document.getElementById('root') as HTMLElement
 ReactDOM
-  // @ts-expect-error
   .createRoot(root)
   .render(
     <React.StrictMode>

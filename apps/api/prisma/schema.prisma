@@ -55,7 +55,7 @@ model VolunteerShifts {
   volunteerId   String // relation scalar field (used in the `@relation` attribute above)
   shiftId       String // relation scalar field (used in the `@relation` attribute above)
 
-  role          VolunteerRole @default(HELPER)
+  role          ShiftRole @default(HELPER)
 
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
@@ -102,7 +102,7 @@ model Event {
   updatedAt       DateTime   @updatedAt
 }
 
-enum VolunteerRole {
+enum ShiftRole {
   LEADER
   SHADOW_LEADER
   HELPER

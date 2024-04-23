@@ -1,3 +1,6 @@
+-- CreateEnum
+CREATE TYPE "ShiftRole" AS ENUM ('LEADER', 'SHADOW_LEADER', 'HELPER');
+
 -- CreateTable
 CREATE TABLE "Location" (
     "id" TEXT NOT NULL,
@@ -40,6 +43,7 @@ CREATE TABLE "ShiftType" (
 CREATE TABLE "VolunteerShifts" (
     "volunteerId" TEXT NOT NULL,
     "shiftId" TEXT NOT NULL,
+    "role" "ShiftRole" NOT NULL DEFAULT 'HELPER',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "deleted" TIMESTAMP(3),
@@ -52,6 +56,7 @@ CREATE TABLE "Volunteer" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -79,6 +84,9 @@ CREATE TABLE "Event" (
 
     CONSTRAINT "Event_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Volunteer_email_key" ON "Volunteer"("email");
 
 -- AddForeignKey
 ALTER TABLE "EventShiftType" ADD CONSTRAINT "EventShiftType_eventId_fkey" FOREIGN KEY ("eventId") REFERENCES "Event"("id") ON DELETE CASCADE ON UPDATE CASCADE;

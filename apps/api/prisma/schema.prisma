@@ -6,3 +6,104 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Location {
+  id              String     @id @default(uuid())
+
+  address         String
+  name            String
+  manager         String
+  contact         String
+  notes           String
+  code            Int
+  rooms           String
+  events          Event[]
+
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+}
+
+model EventShiftType {
+  event         Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  shiftType     ShiftType @relation(fields: [shiftTypeId], references: [id], onDelete: Cascade)
+  eventId       String // relation scalar field (used in the `@relation` attribute above)
+  shiftTypeId   String // relation scalar field (used in the `@relation` attribute above)
+
+  volunteersMin Int
+  volunteersMax Int
+
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@id([eventId, shiftTypeId])
+}
+
+model ShiftType {
+  id              String     @id @default(uuid())
+
+  name            String
+  eventShiftTypes EventShiftType[]
+  shifts          Shift[]
+
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+}
+
+model VolunteerShifts {
+  volunteer     Volunteer @relation(fields: [volunteerId], references: [id])
+  shift         Shift     @relation(fields: [shiftId], references: [id])
+  volunteerId   String // relation scalar field (used in the `@relation` attribute above)
+  shiftId       String // relation scalar field (used in the `@relation` attribute above)
+
+  role          ShiftRole @default(HELPER)
+
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  deleted       DateTime?
+
+  @@id([volunteerId, shiftId])
+}
+
+model Volunteer {
+  id            String     @id @default(uuid())
+
+  name          String
+  phone         String
+  email         String     @unique
+  shifts        VolunteerShifts[]
+
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model Shift {
+  id            String     @id @default(uuid())
+
+  shiftType     ShiftType @relation(fields: [shiftTypeId], references: [id], onDelete: Cascade)
+  event         Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  volunteers    VolunteerShifts[]
+  shiftTypeId   String // relation scalar field (used in the `@relation` attribute above)
+  eventId       String // relation scalar field (used in the `@relation` attribute above)
+
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model Event {
+  id              String     @id @default(uuid())
+
+  date            DateTime
+  eventShiftTypes EventShiftType[]
+  shifts          Shift[]
+  location        Location @relation(fields: [locationId], references: [id])
+  locationId      String
+
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+}
+
+enum ShiftRole {
+  LEADER
+  SHADOW_LEADER
+  HELPER
+}

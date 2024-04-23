@@ -33,7 +33,7 @@ Set some env. variables to run the app. You shoudl set this env. variables in di
 
 We use node `20.11.0` as you can see in the file `.nvmrc`. You need to install this node version. You can install the binaries or install using `nvm` or `fnm`.
 
-When you have this noder version installed, activate `yarn` with 
+When you have this noder version installed, activate `yarn` with
 
 ```bash
 > corepack enable yarn

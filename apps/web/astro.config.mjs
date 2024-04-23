@@ -1,8 +1,9 @@
-import { defineConfig } from 'astro/config';
+import process from 'node:process'
+import { defineConfig } from 'astro/config'
 
-import tailwind from '@astrojs/tailwind';
+import tailwind from '@astrojs/tailwind'
 
-const { PORT } = process.env;
+const { PORT } = process.env
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,6 +11,6 @@ export default defineConfig({
   output: 'hybrid',
   integrations: [tailwind()],
   server: {
-    port: PORT ? Number(PORT) : 8000
-  }
-});
+    port: PORT ? Number(PORT) : 8000,
+  },
+})

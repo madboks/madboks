@@ -1,4 +1,4 @@
-import errorSchema from "@/utils/errorSchema";
+import errorSchema from '@/utils/errorSchema'
 
 export const GOOGLE_GET_SCHEMA = {
   querystring: {
@@ -33,14 +33,14 @@ export const GOOGLE_GET_SCHEMA = {
       properties: {
         error: {
           type: 'boolean',
-          default: false
-        }
-      }
+          default: false,
+        },
+      },
     },
     302: {
       description: 'Redirects the user to the specified URL if the authentication process is successful',
       type: 'string',
     },
     400: errorSchema(400),
-  }
+  },
 }

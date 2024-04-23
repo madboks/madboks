@@ -1,18 +1,18 @@
 {
   "extends": "../../tsconfig.json",
-  "exclude": [
-    "node_modules"
-  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "allowImportingTsExtensions": true
+  },
   "include": [
     "src/**/*.ts",
     "prisma/**/*.ts",
     "env.d.ts"
   ],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-    },
-    "allowImportingTsExtensions": true,
-  }
+  "exclude": [
+    "node_modules"
+  ]
 }

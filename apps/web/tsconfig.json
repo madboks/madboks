@@ -1,16 +1,16 @@
 {
   "extends": "../../tsconfig.json",
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "src/**/*.astro",
-    "src/env.d.ts",
-  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./src/*"]
     }
-  }
+  },
+  "include": [
+    "src/**/*.astro",
+    "src/env.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

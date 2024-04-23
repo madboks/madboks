@@ -1,13 +1,13 @@
-import { redirect } from "react-router-dom"
+import { redirect } from 'react-router-dom'
 
 const OAUTH_AUTHORIZATION_URL = 'https://accounts.google.com/o/oauth2/v2/auth'
 const OAUTH_SCOPES = [
   'https://www.googleapis.com/auth/userinfo.email',
-  'https://www.googleapis.com/auth/userinfo.profile'
+  'https://www.googleapis.com/auth/userinfo.profile',
 
 ]
 
-export async function action () {
+export async function action() {
   const params = new URLSearchParams()
 
   params.set('response_type', 'code')
@@ -18,7 +18,6 @@ export async function action () {
 
   const autorizationUrl = new URL(OAUTH_AUTHORIZATION_URL)
   autorizationUrl.search = params.toString()
-  console.log(autorizationUrl.toString());
 
   return redirect(autorizationUrl.toString())
 }

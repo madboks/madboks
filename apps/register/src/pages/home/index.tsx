@@ -1,8 +1,8 @@
 import React from 'react'
 
-export function Component () {
+export function Component() {
   return (
-    <ul className='space-y-8 mt-8'>
+    <ul className="space-y-8 mt-8">
       Home page
     </ul>
   )

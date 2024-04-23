@@ -1,19 +1,18 @@
-import { isProduction } from "@/utils/env"
+import { isProduction } from '@/utils/env'
 
 interface FetchProps {
-  url: string,
-  method?: string,
+  url: string
+  method?: string
   filters?: Record<string, string>
   body?: Record<string, string>
 }
 
-const normalizeFilters = (filters: Record<string, string>) => {
+function normalizeFilters(filters: Record<string, string>) {
   const qs = Object
     .entries(filters)
     .reduce((acc, [key, value]) => {
-      if (value) {
+      if (value)
         acc.append(`filter[${key}]`, value)
-      }
 
       return acc
     }, new URLSearchParams())
@@ -21,11 +20,11 @@ const normalizeFilters = (filters: Record<string, string>) => {
   return qs.toString()
 }
 
-export async function api ({
+export async function api({
   url,
   method = 'GET',
   filters = {},
-  body
+  body,
 }: FetchProps) {
   const abortController = new AbortController()
 
@@ -44,19 +43,18 @@ export async function api ({
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: isProduction() ? 'same-origin' : 'include'
-      }
+        credentials: isProduction() ? 'same-origin' : 'include',
+      },
     )
 
-    if (response.ok) {
+    if (response.ok)
       return await response.json()
-    }
 
     return await Promise.reject(response)
-  } catch (error) {
-    if (error.name && error.name.toLowerCase() !== 'aborterror') {
+  }
+  catch (error) {
+    if (error.name && error.name.toLowerCase() !== 'aborterror')
       abortController.abort()
-    }
 
     return await Promise.reject(error)
   }

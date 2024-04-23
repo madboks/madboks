@@ -1,17 +1,17 @@
-type ErrorSchema = {
+interface ErrorSchema {
   type: string
   required: string[]
   properties: Record<string, unknown>
 }
 
-function schema (status = 400): ErrorSchema {
+function schema(status = 400): ErrorSchema {
   return ({
     type: 'object',
     required: ['error', 'errors'],
     properties: {
       error: {
         type: 'boolean',
-        default: true
+        default: true,
       },
       errors: {
         type: 'array',
@@ -22,13 +22,13 @@ function schema (status = 400): ErrorSchema {
             code: { type: 'string' },
             status: {
               type: 'string',
-              default: status.toString()
+              default: status.toString(),
             },
-            detail: { type: 'string' }
-          }
-        }
-      }
-    }
+            detail: { type: 'string' },
+          },
+        },
+      },
+    },
   })
 }
 

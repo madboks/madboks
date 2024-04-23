@@ -13,6 +13,6 @@ export const router = createBrowserRouter([
         index: true,
         element: 'Hi! Welcome to the registration page!',
       },
-    ]
-  }
+    ],
+  },
 ])

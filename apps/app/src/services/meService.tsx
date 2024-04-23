@@ -1,11 +1,11 @@
-import { api } from "@/utils/api";
+import { api } from '@/utils/api'
 
-async function me () {
+async function me() {
   return await api({
     url: '/users/me',
   })
 }
 
 export default {
-  me
+  me,
 }

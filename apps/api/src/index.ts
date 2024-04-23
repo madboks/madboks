@@ -1,3 +1,4 @@
+import process from 'node:process'
 import Fastify, { type FastifyInstance } from 'fastify'
 import { parse } from 'qs'
 
@@ -14,25 +15,25 @@ interface ServerLogger {
   }
 }
 
-async function runServer (transport?: ServerLogger): Promise<FastifyInstance> {
+async function runServer(transport?: ServerLogger): Promise<FastifyInstance> {
   const server = Fastify({
     ajv: {
       customOptions: {
         allErrors: false,
         coerceTypes: true,
         removeAdditional: 'all',
-        useDefaults: true
-      }
+        useDefaults: true,
+      },
     },
     disableRequestLogging: isProduction(),
     genReqId: () => uuid(),
     ignoreTrailingSlash: false,
     logger: {
       level: 'info',
-      transport
+      transport,
     },
     querystringParser: parse,
-    trustProxy: false
+    trustProxy: false,
   })
 
   await app(server)
@@ -42,15 +43,15 @@ async function runServer (transport?: ServerLogger): Promise<FastifyInstance> {
   return await server
 }
 
-async function start (): Promise<FastifyInstance> {
+async function start(): Promise<FastifyInstance> {
   let transport: ServerLogger | undefined
   if (!isProduction()) {
     transport = {
       target: 'pino-pretty',
       options: {
         translateTime: true,
-        colorize: true
-      }
+        colorize: true,
+      },
     }
   }
 
@@ -59,9 +60,10 @@ async function start (): Promise<FastifyInstance> {
   try {
     await server.listen({
       port: Number(process.env.API_PORT ?? 3000),
-      host: process.env.API_HOST ?? '0.0.0.0'
+      host: process.env.API_HOST ?? '0.0.0.0',
     })
-  } catch (error) {
+  }
+  catch (error) {
     server.log.error(error)
   }
 
@@ -69,7 +71,7 @@ async function start (): Promise<FastifyInstance> {
 }
 
 start()
-  .catch(err => {
+  .catch((err) => {
     console.error(err)
     process.exit(1)
   })

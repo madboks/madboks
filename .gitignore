@@ -2,6 +2,7 @@
 dist
 
 .husky/_
+.eslintcache
 
 # env files
 .env

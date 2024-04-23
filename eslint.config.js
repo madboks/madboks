@@ -7,7 +7,7 @@ export default antfu([
     ],
   },
   {
-    files: ['packages/web/**/*.astro'],
+    files: ['apps/web/**/*.astro'],
     astro: true,
   },
   {

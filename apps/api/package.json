@@ -36,6 +36,7 @@
   "scripts": {
     "dev": "node --env-file=.env --import tsx --watch --watch-preserve-output src/index.ts",
     "db:reset": "yarn run prisma migrate reset --force",
+    "db:generate": "yarn run prisma generate",
     "lint": "",
     "lint:type": "tsc --noEmit",
     "lint:fix": "",

@@ -1,71 +1,95 @@
 # Madboks
 
-Madboks: The app to register the food
+A repository that hosts all Madboks apps: 
+- The web that functions as a home page for the org [web](./apps/web/README.md)
+- The app for registering the food [register](./apps/register/README.md)
+- The app for the rest of the utilities like event management, volunteer event sign-up, and box bookings [app](./apps/app/README.md)
 
-## Apps
-
-[API](./apps/api/README.md)
-[APP](./apps/app/README.md)
+All these apps are served by the [api](./apps/api/README.md), which uses a `PostgreSQL` database
 
 ## Development
 
 ### Prerequisites
+After cloning the repository, if you have `Docker` and `Visual Studio Code` installed, you can start coding right away. Our advice is to use `docker`, but it's something personal. Here are [9 reasons why](https://dev.to/danielgaldev/9-reasons-why-you-should-use-docker-as-a-development-environment-474j)
 
-Before doing anything, we need to run our database with `PostgreSQL`. You can run it on your local machine or using `docker`. Our advice is to use `docker`, but it's something personal.
-
-#### Docker
-
-To run the database with docker, you must have `docker` and `docker-compose` installed. Once installed, run this command from the root directory to create and run the container.
-
-```bash
-> docker-compose up --detach
+To use any of the scripts in the repository is necessary to change the access mode
+```bash 
+> chmod -R +x scripts/
 ```
 
-This command will download the `PostgreSQL` image, and mount the container, running in the background.
+### Running code from your local
 
-The next time that you want to run the database, run the same command, and that's all.
+#### Set up a `PostgreSQL` database. 
+* with Docker
 
-### Env files
+Start the database service with `docker-compose`.
 
-Set some env. variables to run the app. You shoudl set this env. variables in different `.env` files. If you take a look in the apps inside `apps` directory, you should see some `.env.sample` files. Copy & paste this file and rename to `.env.`, and fill the information for the env vars inside this file.
+```bash 
+> docker compose up postgres
+```
+* or without Docker
 
-### Install node dependencies
+Create a `PostgreSQL` database called `madboks` to be used by the api, in either your local or a remote host and make sure to remember host URL, user and password.
 
-We use node `20.11.0` as you can see in the file `.nvmrc`. You need to install this node version. You can install the binaries or install using `nvm` or `fnm`.
+#### Install dependencies
+* Run scripts/install.sh
+Provide the params of your database or leave empty if you want to use the default values
 
-When you have this noder version installed, activate `yarn` with 
+```bash 
+> scripts/install.sh -h
+ Usage: scripts/install.sh <db_host> <db_port> <db_user>
+ Description: This script sets up environment variables and installs dependencies.
+ Options:
+   -h, --help          Display this help message
+   <db_host>           Database host (default: 127.0.0.1)
+   <db_port>           Database port (default: 4433)
+
+> scripts/install.sh <db_host> <db_port> <db_user>
+```
+
+* or use yarn and .env files
+If you take a look in the apps inside `apps` directory, you should see some `.env.sample` files. Copy & paste `.env.sample` and rename to `.env.` if it doesn't exist already. In the file, every variable enclosed like this `${}` is a reference to your global environment variables. Continue with either declaring those variables globally or override them in the file. Notice that `.env.` files won't be added to the repository as they are included in .gitignore. 
+
+After setting the variables, install dependencies with matching versions to the project and run dev command. The current project is running in node `20.11.0` as you can see in the file `.nvmrc`. You need to install this node version using `nvm` or `fnm` and activate yarn. 
 
 ```bash
+> nvm install 20.11.0
 > corepack enable yarn
-```
-
-Then, install all dependendies with
-
-```bash
 > yarn install
 ```
 
 When you run the `install` command, we run one more script in the background which you can find in our [package.json](./package.json). The script is `postinstall` [link](https://yarnpkg.com/advanced/lifecycle-scripts#postinstall) and runs after installing, updating, or changing a dependency in the project. This script will set up the git hooks and configuration for [Husky](https://typicode.github.io/husky/), a library to manage the different git hooks and the actions we want to run on them (like linters)
 
-### Install package-specific things
 
-To run one of the apps, check the README inside the apps
+#### Run apps scripts
+Each app is a workspace in yarn. They have their own package.json where commands (scripts) like dev, build, lint are defined. 
+* Run using scripts/run.sh
 
-[API](./apps/api/README.md)
-[APP](./apps/app/README.md)
+Use ./scripts/run.sh <app> <command> to run the command of your choice. This will make sure that the .env file exists before executing `yarn workspace @madboks/<app> run <command>`
 
-### Run scripts
-
-Sometimes there are some scripts/tasks that you can run from the root directory. You can take a look at all of them in `package.json`. For example, if you want to run the `dev` script on all packages, you can run:
-
-```tap
-> yarn run dev
+Example on how to start the dev environment for the api : 
+```bash
+> ./scripts/run.sh api dev
 ```
 
-but if you want to run the `dev` script in just one, like `api`, using the package name, you can run this:
+* Run using yarn
+You need to make sure that .env exists to those commands that uses it like `yarn workspace @madboks/api run dev`
 
-```tap
-> yarn workspace @madboks/api run dev
+#### Developing
+
+* Use `Visual Studio Code` and docker compose
+This option is as easy as running
+
+```bash
+> docker-compose up --detach
+```
+And changes in the local files will be reflected in the container in no time
+
+* Using yarn workspace @madboks/<workspace> run dev and any IDE of your choice
+Command `dev` is available for all workspaces, and it starts them watching out for any new changes. So if you get that command running for any of the workspaces, then you can start changing code. Check the README.md for each workspace, as they have their own requirements.
+
+```bash
+> yarn workspace @madboks/<workspace> run dev
 ```
 
 ## Deploy

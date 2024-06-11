@@ -10,3 +10,51 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
       - 4433:5432
+  api:
+    container_name: api
+    environment:
+      - _DATABASE_HOST_=postgres
+      - _DATABASE_PORT_=5432
+      - _DATABASE_USER_=madboks
+    build:
+      context: .
+      args:
+        - BUILD_CONTEXT=api
+        - PORT=3000
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./apps/api:/usr/opt/src/apps/api
+  app:
+    container_name: app
+    build:
+      context: .
+      args:
+        - BUILD_CONTEXT=app
+        - PORT=3000
+    ports:
+      - '9000:9000'
+    volumes:
+      - ./apps/app:/usr/opt/src/apps/app
+  register:
+    container_name: register
+    build:
+      context: .
+      args:
+        - BUILD_CONTEXT=register
+        - PORT=9001
+    ports:
+      - '9001:9001'
+    volumes:
+      - ./apps/register:/usr/opt/src/apps/register
+  web:
+    container_name: web
+    build:
+      context: .
+      args:
+        - BUILD_CONTEXT=web
+        - PORT=9001
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./apps/web:/usr/opt/src/apps/web
